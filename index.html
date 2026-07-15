@@ -2,36 +2,56 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#0b0a08" />
-  <title>GradTrack Aokbaab</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover"
+  />
+  <meta name="theme-color" content="#0b0b0b" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  />
+  <meta name="apple-mobile-web-app-title" content="GradTrack" />
+
+  <title>GradTrack — Supaporn Kriangkraiwanich</title>
 
   <style>
+    :root {
+      --blue: #40669f;
+      --cream: #f4efe9;
+      --red: #921100;
+      --black: #0b0b0b;
+      --dark: #333333;
+      --gray: #666666;
+      --light-gray: #cccccc;
+      --background: #f5f5f5;
+      --surface: #ffffff;
+      --border: #e5e5e5;
+      --success: #247a4a;
+      --warning: #ad6b00;
+      --danger: #a52016;
+
+      --card-radius: 16px;
+      --control-radius: 10px;
+      --card-shadow: 0 6px 14px rgba(0, 0, 0, 0.14);
+    }
+
     * {
       box-sizing: border-box;
     }
 
-    :root {
-      --black: #0b0a08;
-      --white: #ffffff;
-      --paper: #f4efe9;
-      --blue: #40669f;
-      --blue-light: #d8e3f3;
-      --red: #921100;
-      --gold: #dcae2b;
-      --gray: #777777;
-      --border: #bcb5ad;
-
-      font-family: Inter, "Noto Sans Thai", Tahoma, sans-serif;
-      color: #161616;
-      background: #d7d7d7;
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
       min-width: 320px;
       min-height: 100vh;
-      background: linear-gradient(135deg, #dedede, #b9b9b9);
+      color: var(--dark);
+      background: #d8d8d8;
+      font-family: Arial, "Noto Sans Thai", Tahoma, sans-serif;
     }
 
     button,
@@ -48,488 +68,629 @@
       display: none !important;
     }
 
-    .app-shell {
-      min-height: 100vh;
-      display: grid;
-      place-items: start center;
-      padding: 20px;
-    }
-
-    .phone-frame {
+    .app {
       position: relative;
-      width: min(100%, 430px);
-      min-height: 860px;
+      width: min(100%, 460px);
+      min-height: 100vh;
+      margin: auto;
       overflow: hidden;
-      background: var(--paper);
-      border: 8px solid #111;
-      border-radius: 42px;
-      box-shadow: 0 24px 70px rgb(0 0 0 / 35%);
+      background: var(--background);
+      box-shadow: 0 0 46px rgba(0, 0, 0, 0.2);
     }
 
-    /* Header */
+    /* =========================
+       HEADER
+    ========================= */
 
-    .hero-header {
+    .masthead {
       display: flex;
       align-items: center;
-      gap: 15px;
-      padding: 27px 24px 22px;
+      gap: 14px;
+      padding: 22px 20px 18px;
       color: white;
       background: var(--black);
       border-bottom: 4px solid var(--blue);
     }
 
-    .hero-header h1 {
-      margin: 0;
-      font-family: Georgia, serif;
-      font-size: 27px;
-      letter-spacing: 2px;
-    }
-
-    .eyebrow,
-    .section-kicker {
-      margin: 0;
-      color: var(--gold);
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-    }
-
-    .subtitle {
-      margin: 3px 0 0;
-      color: #c9c9c9;
-      font-size: 12px;
-    }
-
-    .sun-mark {
+    .weather-mark {
       position: relative;
-      width: 41px;
+      width: 42px;
       height: 32px;
       flex: none;
     }
 
-    .sun-mark::before {
-      content: "";
+    .weather-mark .sun {
       position: absolute;
       top: 0;
-      left: 9px;
-      width: 20px;
-      height: 20px;
-      background: #f4bd20;
+      left: 8px;
+      width: 19px;
+      height: 19px;
+      background: #f2bd19;
       border-radius: 50%;
     }
 
-    .sun-mark::after {
-      content: "";
+    .weather-mark .cloud-a,
+    .weather-mark .cloud-b {
       position: absolute;
       bottom: 0;
-      width: 38px;
-      height: 15px;
       background: white;
       border-radius: 20px;
     }
 
-    .sun-mark span {
-      position: absolute;
-      bottom: 0;
-      left: 2px;
-      width: 22px;
-      height: 22px;
-      background: white;
-      border-radius: 50%;
+    .weather-mark .cloud-a {
+      left: 0;
+      width: 38px;
+      height: 14px;
     }
 
-    /* Profile */
+    .weather-mark .cloud-b {
+      left: 4px;
+      width: 21px;
+      height: 21px;
+    }
 
-    .profile-strip {
+    .masthead h1 {
+      margin: 0;
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 27px;
+      line-height: 1;
+      letter-spacing: 1px;
+    }
+
+    .masthead p {
+      margin: 6px 0 0;
+      color: #f2bd19;
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+    }
+
+    /* =========================
+       PROFILE
+    ========================= */
+
+    .profile {
       display: flex;
       align-items: center;
-      gap: 11px;
-      padding: 14px 20px;
-      background: white;
-      border-bottom: 1px solid #c8c1b9;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
     }
 
     .avatar {
       display: grid;
-      width: 38px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
+      flex: none;
       place-items: center;
       color: white;
-      font-weight: 900;
+      font-size: 18px;
+      font-weight: 800;
       background: var(--blue);
       border-radius: 50%;
     }
 
     .profile-copy {
-      display: flex;
+      min-width: 0;
       flex: 1;
-      flex-direction: column;
     }
 
     .profile-copy strong {
-      font-size: 13px;
+      display: block;
+      overflow: hidden;
+      font-size: 14px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .profile-copy span {
+      display: block;
+      margin-top: 3px;
       color: var(--gray);
-      font-size: 10px;
-    }
-
-    .status-dot {
-      display: grid;
-      width: 27px;
-      height: 27px;
-      place-items: center;
-      color: white;
-      font-weight: 900;
-      background: var(--black);
-      border-radius: 50%;
-    }
-
-    /* Content */
-
-    .content {
-      height: 650px;
-      padding: 18px 17px 105px;
-      overflow-y: auto;
-    }
-
-    .stack {
-      display: grid;
-      gap: 14px;
-    }
-
-    .paper-card,
-    .feature-card,
-    .metric-card,
-    .course-card {
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      box-shadow: 0 4px 0 rgb(0 0 0 / 12%);
-    }
-
-    .paper-card {
-      padding: 16px;
-      background: white;
-    }
-
-    .paper-card h2,
-    .info-card h2 {
-      margin: 3px 0 13px;
-      font-family: Georgia, serif;
-      font-size: 21px;
-    }
-
-    .dark-card {
-      color: white;
-      background: var(--black);
-    }
-
-    .feature-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px;
-    }
-
-    .feature-card p {
-      max-width: 250px;
-      color: #cacaca;
       font-size: 11px;
     }
 
-    .big-number {
-      margin: 7px 0;
-      font-family: Georgia, serif;
-      font-size: 54px;
+    .profile-status {
+      padding: 7px 10px;
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      background: var(--black);
+      border: 0;
+      border-radius: 999px;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+      min-height: calc(100vh - 146px);
+      padding: 20px 16px 112px;
+    }
+
+    .tab {
+      display: grid;
+      gap: 16px;
+    }
+
+    .kicker {
+      margin: 0;
+      color: var(--red);
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+    }
+
+    h2 {
+      margin: 4px 0 14px;
+      color: var(--black);
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 24px;
+      line-height: 1.1;
+    }
+
+    h3 {
+      margin: 0;
+      color: var(--black);
+    }
+
+    .card {
+      padding: 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      box-shadow: var(--card-shadow);
+    }
+
+    .card.dark {
+      color: white;
+      background: var(--black);
+      border-color: #222222;
+    }
+
+    .card.dark h2 {
+      color: white;
+    }
+
+    .card.dark .kicker {
+      color: #f2bd19;
+    }
+
+    /* =========================
+       DASHBOARD
+    ========================= */
+
+    .hero-card {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .gpa {
+      margin-top: 4px;
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 56px;
+      font-weight: 800;
       line-height: 1;
     }
 
-    .award-icon {
-      font-size: 48px;
+    .hero-note {
+      margin: 8px 0 0;
+      color: #d0d0d0;
+      font-size: 11px;
+      line-height: 1.5;
     }
 
-    .two-column {
+    .hero-icon {
+      font-size: 43px;
+    }
+
+    .metrics {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
     }
 
-    .metric-card {
+    .metric {
       display: flex;
+      min-height: 136px;
       flex-direction: column;
-      padding: 16px;
-      background: white;
+      justify-content: space-between;
     }
 
-    .metric-card span {
+    .metric span {
+      color: var(--gray);
       font-size: 11px;
     }
 
-    .metric-card strong {
-      font-family: Georgia, serif;
-      font-size: 36px;
+    .metric strong {
+      color: var(--black);
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 40px;
     }
 
-    .metric-card small {
-      color: #666;
-      font-size: 9px;
+    .metric small {
+      color: var(--gray);
+      font-size: 10px;
     }
 
-    .accent-card {
-      color: white;
+    .metric.red {
       background: var(--red);
-      border-color: #6e0c00;
+      border-color: #711000;
     }
 
-    .accent-card small {
-      color: #f2cbc4;
+    .metric.red span,
+    .metric.red strong,
+    .metric.red small {
+      color: white;
     }
 
-    .card-heading {
+    .card-head {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
+      gap: 12px;
     }
 
-    .card-heading > strong {
-      font-family: Georgia, serif;
-      font-size: 24px;
-    }
-
-    /* Progress */
-
-    .progress-track {
-      height: 8px;
-      overflow: hidden;
-      background: #dfdfdf;
-      border: 1px solid #bcbcbc;
-      border-radius: 20px;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: var(--blue);
-    }
-
-    .progress-fill.red {
-      background: var(--red);
-    }
-
-    .progress-fill.gold {
-      background: var(--gold);
-    }
-
-    .category-list {
-      display: grid;
-      gap: 14px;
-    }
-
-    .category-label {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 6px;
-      font-size: 11px;
-    }
-
-    /* Buttons */
-
-    .primary-button,
-    .outline-button,
-    .danger-button {
-      padding: 12px 14px;
-      border: 0;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-    .primary-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      color: white;
-      background: var(--blue);
-    }
-
-    .outline-button {
-      color: #161616;
-      background: white;
-      border: 1px solid #161616;
-    }
-
-    .danger-button {
-      color: white;
-      background: var(--red);
-    }
-
-    .paper-card > .outline-button,
-    .paper-card > .danger-button {
-      width: 100%;
-      margin-top: 8px;
-    }
-
-    .toggle-grid,
-    .select-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 9px;
-    }
-
-    .choice {
-      padding: 10px;
-      text-align: left;
-      background: #eee;
-      border: 1px solid #aaa;
-      border-radius: 8px;
-      font-size: 10px;
-    }
-
-    .choice strong {
-      display: block;
-      margin-top: 3px;
-    }
-
-    .choice.active {
-      color: white;
-      background: var(--black);
-      border-color: var(--black);
-    }
-
-    /* Form */
-
-    .filter-card label,
-    .modal label {
-      display: grid;
-      gap: 5px;
-      font-size: 10px;
+    .big-label {
+      color: var(--blue);
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 27px;
       font-weight: 800;
     }
 
-    .select-wrap {
-      position: relative;
+    /* =========================
+       PROGRESS
+    ========================= */
+
+    .progress {
+      height: 10px;
+      overflow: hidden;
+      background: #ececec;
+      border: 1px solid #d4d4d4;
+      border-radius: 999px;
     }
 
-    .select-wrap::after {
-      content: "⌄";
-      position: absolute;
-      top: 50%;
-      right: 9px;
-      pointer-events: none;
-      transform: translateY(-55%);
+    .progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--blue);
+      border-radius: inherit;
+      transition: width 0.25s ease;
     }
 
-    .select-wrap select,
-    .modal select,
-    .modal input {
+    .progress.red span {
+      background: var(--red);
+    }
+
+    .progress.gold span {
+      background: #d0a522;
+    }
+
+    .progress.green span {
+      background: var(--success);
+    }
+
+    /* =========================
+       STATUS
+    ========================= */
+
+    .status-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px;
+      background: #eef2f8;
+      border: 1px solid #c9d6e8;
+      border-radius: 12px;
+    }
+
+    .status-box.warning {
+      background: #fff2da;
+      border-color: #efd19a;
+    }
+
+    .status-box.danger {
+      background: #fbe4e1;
+      border-color: #edb8b1;
+    }
+
+    .status-symbol {
+      font-size: 28px;
+    }
+
+    .status-copy strong {
+      display: block;
+      color: var(--black);
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 19px;
+    }
+
+    .status-copy p {
+      margin: 5px 0 0;
+      color: var(--gray);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       HONORS
+    ========================= */
+
+    .honor-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .honor-card {
+      padding: 13px;
+      background: #f1f1f1;
+      border: 1px solid #dddddd;
+      border-radius: 12px;
+    }
+
+    .honor-card.eligible {
+      background: #fff4cc;
+      border-color: #e4c25e;
+    }
+
+    .honor-card strong {
+      display: block;
+      color: var(--black);
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 15px;
+    }
+
+    .honor-card span {
+      display: block;
+      margin-top: 5px;
+      color: var(--gray);
+      font-size: 10px;
+    }
+
+    /* =========================
+       TREND
+    ========================= */
+
+    .trend-wrap {
+      display: grid;
+      grid-template-columns: 95px 1fr;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .trend-badge {
+      display: grid;
+      height: 95px;
+      place-items: center;
+      color: white;
+      text-align: center;
+      background: var(--black);
+      border-radius: 14px;
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .trend-copy h3 {
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 18px;
+    }
+
+    .trend-copy p {
+      margin: 6px 0 0;
+      color: var(--gray);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    /* =========================
+       FORMS
+    ========================= */
+
+    .filter-grid,
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    label {
+      display: grid;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    input,
+    select {
       width: 100%;
-      padding: 9px 28px 9px 9px;
-      color: #111;
-      background: #f3f3f3;
-      border: 1px solid #aaa;
-      border-radius: 6px;
-      appearance: none;
+      padding: 11px 12px;
+      color: var(--black);
+      background: #f0f0f0;
+      border: 1px solid #d6d6d6;
+      border-radius: var(--control-radius);
+      outline: none;
     }
 
-    /* Courses */
+    input:focus,
+    select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(64, 102, 159, 0.14);
+    }
+
+    .checkbox-line {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .checkbox-line input {
+      width: auto;
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .btn {
+      padding: 12px 14px;
+      font-weight: 800;
+      border: 0;
+      border-radius: 9px;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      color: white;
+      background: var(--blue);
+    }
+
+    .btn.secondary {
+      color: var(--black);
+      background: #e5e5e5;
+    }
+
+    .btn.danger {
+      color: white;
+      background: var(--red);
+    }
+
+    .btn.full {
+      width: 100%;
+    }
+
+    /* =========================
+       COURSES
+    ========================= */
 
     .course-list {
       display: grid;
-      gap: 10px;
+      gap: 12px;
     }
 
-    .course-card {
+    .course {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 11px;
       padding: 12px;
       background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
-    .grade-badge {
+    .grade {
       display: grid;
-      width: 38px;
-      height: 49px;
+      width: 42px;
+      height: 54px;
+      flex: none;
       place-items: center;
       color: white;
-      font-family: Georgia, serif;
-      font-size: 18px;
-      font-weight: 900;
       background: var(--black);
-      border-radius: 7px;
+      border-radius: 9px;
+      font-family: "Comic Sans MS", "Segoe Print", cursive;
+      font-size: 20px;
+      font-weight: 800;
     }
 
-    .course-copy {
+    .course-info {
       min-width: 0;
       flex: 1;
     }
 
-    .course-copy h3 {
-      margin: 5px 0;
+    .course-meta {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      margin-bottom: 5px;
+    }
+
+    .course-code {
+      padding: 3px 7px;
+      color: #2e568a;
+      font-size: 10px;
+      font-weight: 800;
+      background: #dce7f6;
+      border-radius: 6px;
+    }
+
+    .course-term {
+      color: var(--gray);
+      font-size: 10px;
+    }
+
+    .course h3 {
       overflow: hidden;
-      font-size: 12px;
+      font-size: 13px;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
 
-    .course-copy p {
-      margin: 0;
+    .course p {
+      margin: 5px 0 0;
       color: var(--gray);
-      font-size: 9px;
+      font-size: 10px;
     }
 
-    .course-code {
-      padding: 3px 5px;
-      color: #274c7c;
-      font-size: 9px;
-      font-weight: 900;
-      background: var(--blue-light);
-      border-radius: 4px;
-    }
-
-    .term {
-      margin-left: 6px;
-      color: var(--gray);
-      font-size: 9px;
-    }
-
-    .row-actions {
+    .actions {
       display: grid;
-      gap: 4px;
+      gap: 5px;
     }
 
-    .row-actions button,
-    .modal-title button {
-      padding: 4px;
-      background: transparent;
+    .icon-btn {
+      display: grid;
+      width: 31px;
+      height: 31px;
+      place-items: center;
+      color: var(--black);
+      background: #ededed;
       border: 0;
+      border-radius: 50%;
     }
 
-    /* Chart */
+    .icon-btn.delete:hover {
+      color: var(--red);
+      background: #f6d8d2;
+    }
+
+    /* =========================
+       TERM GPA
+    ========================= */
 
     .chart {
       display: flex;
-      height: 190px;
+      height: 220px;
       align-items: flex-end;
-      gap: 7px;
-      padding: 20px 8px 0;
-      border-bottom: 1px solid #999;
-      border-left: 1px solid #999;
+      gap: 6px;
+      padding: 18px 8px 0;
+      overflow-x: auto;
+      border-bottom: 1px solid #aaaaaa;
+      border-left: 1px solid #aaaaaa;
     }
 
-    .bar-column {
+    .bar-col {
       display: flex;
+      min-width: 25px;
       height: 100%;
       flex: 1;
       flex-direction: column;
       align-items: center;
       justify-content: flex-end;
-      gap: 4px;
+      gap: 5px;
     }
 
-    .bar-column span,
-    .bar-column small {
+    .bar-col span,
+    .bar-col small {
       font-size: 8px;
     }
 
@@ -540,99 +701,166 @@
       border-radius: 5px 5px 0 0;
     }
 
-    .semester-list {
+    .term-summary {
       display: grid;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .semester-list > div {
+    .term-item {
       display: grid;
       grid-template-columns: 1fr auto;
-      gap: 3px;
-      padding: 10px;
-      background: #eee;
-      border-radius: 7px;
-      font-size: 10px;
+      gap: 4px;
+      padding: 11px;
+      background: #ededed;
+      border-radius: 9px;
+      font-size: 11px;
     }
 
-    .semester-list small {
+    .term-item small {
       grid-column: 1 / -1;
       color: var(--gray);
     }
 
-    .empty-state {
-      padding: 24px;
+    /* =========================
+       CHECKLIST
+    ========================= */
+
+    .checklist {
+      display: grid;
+      gap: 9px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px;
+      background: #efefef;
+      border: 1px solid #dddddd;
+      border-radius: 10px;
+      font-size: 11px;
+    }
+
+    .check-icon {
+      display: grid;
+      width: 24px;
+      height: 24px;
+      flex: none;
+      place-items: center;
+      color: white;
+      font-weight: 900;
+      background: #cccccc;
+      border-radius: 50%;
+    }
+
+    .check-item.done {
+      background: #e4f2e9;
+      border-color: #bdddc8;
+    }
+
+    .check-item.done .check-icon {
+      background: var(--success);
+    }
+
+    .check-copy {
+      flex: 1;
+    }
+
+    .check-copy strong {
+      display: block;
+      color: var(--black);
+    }
+
+    .check-copy small {
+      display: block;
+      margin-top: 3px;
+      color: var(--gray);
+    }
+
+    /* =========================
+       SETTINGS
+    ========================= */
+
+    .settings-stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .helper {
+      margin: 0;
+      color: var(--gray);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .empty {
+      padding: 28px 16px;
       color: var(--gray);
       text-align: center;
       background: white;
-      border: 1px dashed #aaa;
-      border-radius: 12px;
+      border: 1px dashed #c8c8c8;
+      border-radius: 14px;
       font-size: 12px;
     }
 
-    .info-card {
-      display: flex;
-      gap: 15px;
-      padding: 18px;
-      border-radius: 12px;
-    }
-
-    .info-card p {
-      color: #ccc;
-      font-size: 10px;
-    }
-
-    /* Navigation */
+    /* =========================
+       NAVIGATION
+    ========================= */
 
     .bottom-nav {
-      position: absolute;
-      right: 0;
+      position: fixed;
+      z-index: 20;
       bottom: 0;
-      left: 0;
+      left: 50%;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      padding: 10px 12px 17px;
+      width: min(100%, 460px);
+      grid-template-columns: repeat(5, 1fr);
+      padding: 9px 8px 14px;
       background: var(--black);
       border-top: 3px solid var(--blue);
+      transform: translateX(-50%);
     }
 
-    .bottom-nav button {
+    .nav-btn {
       display: grid;
-      place-items: center;
-      gap: 3px;
-      color: #888;
+      justify-items: center;
+      gap: 4px;
+      color: #8b8b8b;
       background: transparent;
       border: 0;
       font-size: 9px;
     }
 
-    .bottom-nav button.active {
-      color: white;
-    }
-
     .nav-icon {
       display: grid;
-      width: 31px;
-      height: 31px;
+      width: 34px;
+      height: 34px;
       place-items: center;
       border-radius: 50%;
       font-size: 15px;
     }
 
-    .bottom-nav button.active .nav-icon {
+    .nav-btn.active {
+      color: white;
+    }
+
+    .nav-btn.active .nav-icon {
       background: var(--blue);
     }
 
-    /* Modal */
+    /* =========================
+       MODAL
+    ========================= */
 
     .modal-backdrop {
-      position: absolute;
-      z-index: 4;
+      position: fixed;
+      z-index: 50;
       inset: 0;
       display: none;
       align-items: flex-end;
+      justify-content: center;
       padding: 14px;
-      background: rgb(0 0 0 / 70%);
+      background: rgba(0, 0, 0, 0.68);
     }
 
     .modal-backdrop.open {
@@ -641,264 +869,366 @@
 
     .modal {
       display: grid;
-      width: 100%;
-      max-height: 92%;
+      width: min(100%, 430px);
+      max-height: 92vh;
       gap: 12px;
       padding: 18px;
-      overflow-y: auto;
+      overflow: auto;
       background: white;
       border-top: 5px solid var(--blue);
-      border-radius: 14px;
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
     }
 
-    .modal-title {
+    .modal-head {
       display: flex;
+      align-items: flex-start;
       justify-content: space-between;
     }
 
-    .modal-title h2 {
-      margin: 2px 0;
-      font-family: Georgia, serif;
+    .modal-head h2 {
+      margin-bottom: 0;
+    }
+
+    .close {
+      width: 34px;
+      height: 34px;
+      background: #ececec;
+      border: 0;
+      border-radius: 50%;
+      font-size: 18px;
     }
 
     .modal-actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      gap: 9px;
       margin-top: 4px;
     }
 
-    @media (max-width: 460px) {
-      .app-shell {
-        padding: 0;
+    @media (min-width: 461px) {
+      .app {
+        min-height: 900px;
+        margin: 18px auto;
+        border-radius: 26px;
       }
 
-      .phone-frame {
-        width: 100%;
-        min-height: 100vh;
-        border: 0;
-        border-radius: 0;
-      }
-
-      .content {
-        height: calc(100vh - 169px);
+      .bottom-nav {
+        bottom: 18px;
+        border-radius: 0 0 26px 26px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="app-shell">
-    <div class="phone-frame">
-
-      <header class="hero-header">
-        <div class="sun-mark" aria-hidden="true">
-          <span></span>
-        </div>
-
-        <div>
-          <p class="eyebrow">STUDENT PROGRESS SYSTEM</p>
-          <h1>GRADTRACK</h1>
-          <p class="subtitle">Digital Design & Technology</p>
-        </div>
-      </header>
-
-      <section class="profile-strip">
-        <div class="avatar">C</div>
-
-        <div class="profile-copy">
-          <strong>Supaporn Kriangkraiwanich</strong>
-          <span>6710302005 · ปริญญาตรี</span>
-        </div>
-
-        <div class="status-dot">✓</div>
-      </section>
-
-      <main class="content">
-        <section id="dashboardTab" class="stack"></section>
-        <section id="coursesTab" class="stack" hidden></section>
-        <section id="statsTab" class="stack" hidden></section>
-        <section id="settingsTab" class="stack" hidden></section>
-      </main>
-
-      <nav class="bottom-nav">
-        <button class="active" data-tab="dashboardTab">
-          <span class="nav-icon">⌂</span>
-          <span>ภาพรวม</span>
-        </button>
-
-        <button data-tab="coursesTab">
-          <span class="nav-icon">▤</span>
-          <span>รายวิชา</span>
-        </button>
-
-        <button data-tab="statsTab">
-          <span class="nav-icon">▥</span>
-          <span>สถิติ</span>
-        </button>
-
-        <button data-tab="settingsTab">
-          <span class="nav-icon">⚙</span>
-          <span>ตั้งค่า</span>
-        </button>
-      </nav>
-
-      <div id="courseModal" class="modal-backdrop">
-        <form id="courseForm" class="modal">
-
-          <div class="modal-title">
-            <div>
-              <p class="section-kicker">COURSE FORM</p>
-              <h2 id="modalHeading">เพิ่มรายวิชา</h2>
-            </div>
-
-            <button type="button" id="closeModal">✕</button>
-          </div>
-
-          <label>
-            รหัสวิชา
-            <input id="formCode" required />
-          </label>
-
-          <label>
-            ชื่อวิชา
-            <input id="formName" required />
-          </label>
-
-          <div class="select-grid">
-            <label>
-              หน่วยกิต
-              <select id="formCredits">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3" selected>3</option>
-                <option value="4">4</option>
-                <option value="6">6</option>
-              </select>
-            </label>
-
-            <label>
-              เกรด
-              <select id="formGrade"></select>
-            </label>
-          </div>
-
-          <div class="select-grid">
-            <label>
-              ชั้นปี
-              <select id="formYear"></select>
-            </label>
-
-            <label>
-              ภาคเรียน
-              <select id="formSemester">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="Summer">Summer</option>
-              </select>
-            </label>
-          </div>
-
-          <label>
-            หมวดวิชา
-            <select id="formCategory"></select>
-          </label>
-
-          <label id="subcategoryWrap">
-            กลุ่มวิชาย่อย
-            <select id="formSubcategory"></select>
-          </label>
-
-          <div class="modal-actions">
-            <button type="button" class="outline-button" id="cancelModal">
-              ยกเลิก
-            </button>
-
-            <button class="primary-button" type="submit">
-              บันทึก
-            </button>
-          </div>
-
-        </form>
+  <div class="app">
+    <header class="masthead">
+      <div class="weather-mark" aria-hidden="true">
+        <span class="sun"></span>
+        <span class="cloud-a"></span>
+        <span class="cloud-b"></span>
       </div>
 
-    </div>
+      <div>
+        <h1>GRADTRACK</h1>
+        <p>STUDY GUIDE</p>
+      </div>
+    </header>
+
+    <section class="profile">
+      <div id="avatar" class="avatar">S</div>
+
+      <div class="profile-copy">
+        <strong id="profileName">
+          Supaporn Kriangkraiwanich
+        </strong>
+
+        <span id="profileId">
+          660110243 · Digital Design & Technology
+        </span>
+      </div>
+
+      <button id="quickEditProfile" class="profile-status">
+        แก้ไข
+      </button>
+    </section>
+
+    <main>
+      <section id="dashboardTab" class="tab"></section>
+      <section id="coursesTab" class="tab" hidden></section>
+      <section id="termsTab" class="tab" hidden></section>
+      <section id="checklistTab" class="tab" hidden></section>
+      <section id="settingsTab" class="tab" hidden></section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="เมนูหลัก">
+      <button class="nav-btn active" data-tab="dashboardTab">
+        <span class="nav-icon">⌂</span>
+        <span>ภาพรวม</span>
+      </button>
+
+      <button class="nav-btn" data-tab="coursesTab">
+        <span class="nav-icon">▤</span>
+        <span>รายวิชา</span>
+      </button>
+
+      <button class="nav-btn" data-tab="termsTab">
+        <span class="nav-icon">▥</span>
+        <span>รายเทอม</span>
+      </button>
+
+      <button class="nav-btn" data-tab="checklistTab">
+        <span class="nav-icon">✓</span>
+        <span>เช็กลิสต์</span>
+      </button>
+
+      <button class="nav-btn" data-tab="settingsTab">
+        <span class="nav-icon">⚙</span>
+        <span>ตั้งค่า</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- COURSE MODAL -->
+
+  <div id="courseModal" class="modal-backdrop">
+    <form id="courseForm" class="modal">
+      <div class="modal-head">
+        <div>
+          <p class="kicker">COURSE FORM</p>
+          <h2 id="courseModalTitle">เพิ่มรายวิชา</h2>
+        </div>
+
+        <button
+          class="close"
+          id="closeCourseModal"
+          type="button"
+        >
+          ×
+        </button>
+      </div>
+
+      <label>
+        รหัสวิชา
+        <input id="formCode" required />
+      </label>
+
+      <label>
+        ชื่อวิชา
+        <input id="formName" required />
+      </label>
+
+      <div class="form-grid">
+        <label>
+          หน่วยกิต
+
+          <select id="formCredits">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+            <option value="4">4</option>
+            <option value="6">6</option>
+          </select>
+        </label>
+
+        <label>
+          เกรด
+          <select id="formGrade"></select>
+        </label>
+      </div>
+
+      <div class="form-grid">
+        <label>
+          ชั้นปี
+          <select id="formYear"></select>
+        </label>
+
+        <label>
+          ภาคเรียน
+
+          <select id="formSemester">
+            <option value="1">เทอม 1</option>
+            <option value="2">เทอม 2</option>
+            <option value="3">เทอม 3</option>
+          </select>
+        </label>
+      </div>
+
+      <label>
+        หมวดวิชา
+        <select id="formCategory"></select>
+      </label>
+
+      <label id="subcategoryWrap">
+        กลุ่มวิชาย่อย
+        <select id="formSubcategory"></select>
+      </label>
+
+      <label class="checkbox-line">
+        <input id="formRepeated" type="checkbox" />
+        รายวิชานี้เป็นการลงทะเบียนเรียนซ้ำ
+      </label>
+
+      <div class="modal-actions">
+        <button
+          id="cancelCourseModal"
+          class="btn secondary"
+          type="button"
+        >
+          ยกเลิก
+        </button>
+
+        <button class="btn primary" type="submit">
+          บันทึก
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- PROFILE MODAL -->
+
+  <div id="profileModal" class="modal-backdrop">
+    <form id="profileForm" class="modal">
+      <div class="modal-head">
+        <div>
+          <p class="kicker">STUDENT PROFILE</p>
+          <h2>แก้ไขข้อมูลนักศึกษา</h2>
+        </div>
+
+        <button
+          class="close"
+          id="closeProfileModal"
+          type="button"
+        >
+          ×
+        </button>
+      </div>
+
+      <label>
+        ชื่อ–นามสกุล
+        <input id="studentNameInput" required />
+      </label>
+
+      <label>
+        รหัสนักศึกษา
+        <input id="studentIdInput" required />
+      </label>
+
+      <label>
+        ชื่อหลักสูตร
+        <input id="programInput" required />
+      </label>
+
+      <div class="modal-actions">
+        <button
+          id="cancelProfileModal"
+          class="btn secondary"
+          type="button"
+        >
+          ยกเลิก
+        </button>
+
+        <button class="btn primary" type="submit">
+          บันทึก
+        </button>
+      </div>
+    </form>
   </div>
 
   <script>
+    /* =========================
+       CONFIGURATION
+    ========================= */
+
+    const DEFAULT_SETTINGS = {
+      totalCredits: 133,
+
+      honor1Gpa: 3.75,
+      honor2Gpa: 3.25,
+
+      normalMinGpa: 2.0,
+      probationMinGpa: 1.5,
+
+      requireNoFForHonors: true,
+      requireNoRepeatForHonors: true
+    };
+
     const CURRICULUM = {
-      total: 133,
+      genEd: {
+        name: "หมวดศึกษาทั่วไป",
+        required: 33,
 
-      categories: {
-        genEd: {
-          name: "หมวดศึกษาทั่วไป",
-          required: 33,
+        subcategories: {
+          thai: {
+            name: "ภาษาไทย",
+            required: 3
+          },
 
-          subcategories: {
-            thai: {
-              name: "ภาษาไทย",
-              required: 3
-            },
+          foreign: {
+            name: "ภาษาต่างประเทศ",
+            required: 6
+          },
 
-            foreign: {
-              name: "ภาษาต่างประเทศ",
-              required: 6
-            },
+          science: {
+            name: "วิทยาศาสตร์",
+            required: 3
+          },
 
-            science: {
-              name: "วิทยาศาสตร์",
-              required: 3
-            },
+          math: {
+            name: "คณิตศาสตร์",
+            required: 3
+          },
 
-            math: {
-              name: "คณิตศาสตร์",
-              required: 3
-            },
+          social: {
+            name: "สังคมศาสตร์",
+            required: 3
+          },
 
-            social: {
-              name: "สังคมศาสตร์",
-              required: 3
-            },
+          humanities: {
+            name: "มนุษยศาสตร์",
+            required: 3
+          },
 
-            humanities: {
-              name: "มนุษยศาสตร์",
-              required: 3
-            },
-
-            otherGenEd: {
-              name: "ศึกษาทั่วไปอื่น ๆ",
-              required: 12
-            }
+          otherGenEd: {
+            name: "ศึกษาทั่วไปอื่น ๆ",
+            required: 12
           }
-        },
-
-        core: {
-          name: "กลุ่มวิชาแกน",
-          required: 27
-        },
-
-        specific: {
-          name: "กลุ่มวิชาเฉพาะ",
-          required: 67,
-
-          subcategories: {
-            compulsory: {
-              name: "วิชาชีพบังคับ",
-              required: 52
-            },
-
-            elective: {
-              name: "วิชาชีพเลือก",
-              required: 15
-            }
-          }
-        },
-
-        freeElective: {
-          name: "หมวดเลือกเสรี",
-          required: 6
         }
+      },
+
+      core: {
+        name: "กลุ่มวิชาแกน",
+        required: 27
+      },
+
+      specific: {
+        name: "กลุ่มวิชาเฉพาะ",
+        required: 67,
+
+        subcategories: {
+          compulsory: {
+            name: "วิชาชีพบังคับ",
+            required: 52
+          },
+
+          elective: {
+            name: "วิชาชีพเลือก",
+            required: 15
+          }
+        }
+      },
+
+      freeElective: {
+        name: "หมวดเลือกเสรี",
+        required: 6
       }
+    };
+
+    const INITIAL_PROFILE = {
+      name: "Supaporn Kriangkraiwanich",
+      studentId: "660110243",
+      program: "Digital Design & Technology"
     };
 
     const INITIAL_COURSES = [
@@ -911,8 +1241,10 @@
         category: "core",
         subcategory: "",
         year: 1,
-        semester: "1"
+        semester: "1",
+        repeated: false
       },
+
       {
         id: "2",
         code: "DDT102",
@@ -922,8 +1254,10 @@
         category: "specific",
         subcategory: "compulsory",
         year: 1,
-        semester: "1"
+        semester: "1",
+        repeated: false
       },
+
       {
         id: "3",
         code: "THAI101",
@@ -933,8 +1267,10 @@
         category: "genEd",
         subcategory: "thai",
         year: 1,
-        semester: "1"
+        semester: "1",
+        repeated: false
       },
+
       {
         id: "4",
         code: "ENG101",
@@ -944,8 +1280,10 @@
         category: "genEd",
         subcategory: "foreign",
         year: 1,
-        semester: "1"
+        semester: "1",
+        repeated: false
       },
+
       {
         id: "5",
         code: "SCI101",
@@ -955,8 +1293,10 @@
         category: "genEd",
         subcategory: "science",
         year: 1,
-        semester: "1"
+        semester: "2",
+        repeated: false
       },
+
       {
         id: "6",
         code: "DDT103",
@@ -966,8 +1306,10 @@
         category: "core",
         subcategory: "",
         year: 1,
-        semester: "2"
+        semester: "2",
+        repeated: false
       },
+
       {
         id: "7",
         code: "MATH101",
@@ -977,8 +1319,10 @@
         category: "genEd",
         subcategory: "math",
         year: 1,
-        semester: "2"
+        semester: "2",
+        repeated: false
       },
+
       {
         id: "8",
         code: "SOC101",
@@ -988,8 +1332,10 @@
         category: "genEd",
         subcategory: "social",
         year: 1,
-        semester: "2"
+        semester: "3",
+        repeated: false
       },
+
       {
         id: "9",
         code: "HUM101",
@@ -999,8 +1345,10 @@
         category: "genEd",
         subcategory: "humanities",
         year: 1,
-        semester: "2"
+        semester: "3",
+        repeated: false
       },
+
       {
         id: "10",
         code: "ENG102",
@@ -1010,8 +1358,10 @@
         category: "genEd",
         subcategory: "foreign",
         year: 1,
-        semester: "2"
+        semester: "3",
+        repeated: false
       },
+
       {
         id: "11",
         code: "DDT201",
@@ -1021,8 +1371,10 @@
         category: "specific",
         subcategory: "compulsory",
         year: 2,
-        semester: "1"
+        semester: "1",
+        repeated: false
       },
+
       {
         id: "12",
         code: "DDT202",
@@ -1032,8 +1384,10 @@
         category: "specific",
         subcategory: "compulsory",
         year: 2,
-        semester: "1"
+        semester: "1",
+        repeated: false
       },
+
       {
         id: "13",
         code: "DDT203",
@@ -1043,8 +1397,10 @@
         category: "core",
         subcategory: "",
         year: 2,
-        semester: "1"
+        semester: "2",
+        repeated: false
       },
+
       {
         id: "14",
         code: "ENG201",
@@ -1054,8 +1410,10 @@
         category: "genEd",
         subcategory: "otherGenEd",
         year: 2,
-        semester: "1"
+        semester: "2",
+        repeated: false
       },
+
       {
         id: "15",
         code: "FREE101",
@@ -1065,7 +1423,8 @@
         category: "freeElective",
         subcategory: "",
         year: 2,
-        semester: "1"
+        semester: "3",
+        repeated: false
       }
     ];
 
@@ -1082,39 +1441,89 @@
       I: null
     };
 
-    let courses = loadCourses();
+    /* =========================
+       STATE
+    ========================= */
+
+    let profile = loadData(
+      "gradtrack_profile",
+      INITIAL_PROFILE
+    );
+
+    let settings = loadData(
+      "gradtrack_settings",
+      DEFAULT_SETTINGS
+    );
+
+    let courses = loadData(
+      "gradtrack_courses_v2",
+      INITIAL_COURSES
+    );
+
     let editingId = null;
-    let graduatedInTime = true;
-    let hasRegisteredRepeat = false;
     let yearFilter = "all";
     let semesterFilter = "all";
 
-    const $ = selector => document.querySelector(selector);
+    const $ = selector =>
+      document.querySelector(selector);
 
-    function loadCourses() {
+    /* =========================
+       STORAGE
+    ========================= */
+
+    function cloneData(data) {
+      return JSON.parse(
+        JSON.stringify(data)
+      );
+    }
+
+    function loadData(key, fallback) {
       try {
-        const saved = localStorage.getItem("gradtrack_courses");
+        const saved =
+          localStorage.getItem(key);
 
         return saved
           ? JSON.parse(saved)
-          : structuredClone(INITIAL_COURSES);
+          : cloneData(fallback);
       } catch {
-        return structuredClone(INITIAL_COURSES);
+        return cloneData(fallback);
       }
     }
 
-    function saveCourses() {
+    function saveData() {
       localStorage.setItem(
-        "gradtrack_courses",
+        "gradtrack_profile",
+        JSON.stringify(profile)
+      );
+
+      localStorage.setItem(
+        "gradtrack_settings",
+        JSON.stringify(settings)
+      );
+
+      localStorage.setItem(
+        "gradtrack_courses_v2",
         JSON.stringify(courses)
       );
     }
 
-    function calculateStats() {
-      let earned = 0;
-      let points = 0;
+    /* =========================
+       CALCULATIONS
+    ========================= */
+
+    function isPassed(course) {
+      return !["F", "W", "I"].includes(
+        course.grade
+      );
+    }
+
+    function calculateAllStats() {
+      let earnedCredits = 0;
+      let totalPoints = 0;
       let gpaCredits = 0;
+
       let hasF = false;
+      let hasRepeatedCourse = false;
 
       const categoryCredits = {
         genEd: {
@@ -1139,395 +1548,619 @@
         freeElective: 0
       };
 
-      for (const course of courses) {
-        const gradeValue = GRADE_VALUES[course.grade];
-
-        const passed = !["F", "W", "I"].includes(
-          course.grade
-        );
+      courses.forEach(course => {
+        const gradeValue =
+          GRADE_VALUES[course.grade];
 
         if (course.grade === "F") {
           hasF = true;
         }
 
+        if (course.repeated) {
+          hasRepeatedCourse = true;
+        }
+
         if (gradeValue !== null) {
+          totalPoints +=
+            gradeValue * course.credits;
+
           gpaCredits += course.credits;
-          points += gradeValue * course.credits;
         }
 
-        if (!passed) {
-          continue;
+        if (!isPassed(course)) {
+          return;
         }
 
-        earned += course.credits;
+        earnedCredits += course.credits;
 
         if (course.category === "genEd") {
-          categoryCredits.genEd.total += course.credits;
+          categoryCredits.genEd.total +=
+            course.credits;
 
           const subcategory =
-            course.subcategory || "otherGenEd";
+            course.subcategory ||
+            "otherGenEd";
 
-          categoryCredits.genEd[subcategory] =
-            (categoryCredits.genEd[subcategory] || 0) +
-            course.credits;
+          categoryCredits.genEd[
+            subcategory
+          ] += course.credits;
         }
 
-        else if (course.category === "specific") {
-          categoryCredits.specific.total += course.credits;
+        else if (
+          course.category === "specific"
+        ) {
+          categoryCredits.specific.total +=
+            course.credits;
 
           const subcategory =
-            course.subcategory || "compulsory";
+            course.subcategory ||
+            "compulsory";
 
-          categoryCredits.specific[subcategory] =
-            (categoryCredits.specific[subcategory] || 0) +
-            course.credits;
+          categoryCredits.specific[
+            subcategory
+          ] += course.credits;
         }
 
         else {
-          categoryCredits[course.category] +=
-            course.credits;
+          categoryCredits[
+            course.category
+          ] += course.credits;
+        }
+      });
+
+      const cumulativeGpa =
+        gpaCredits > 0
+          ? totalPoints / gpaCredits
+          : 0;
+
+      let studentStatus;
+
+      if (
+        cumulativeGpa >=
+        settings.normalMinGpa
+      ) {
+        studentStatus = {
+          label: "สถานภาพปกติ",
+          tone: "normal",
+          icon: "✓",
+
+          detail:
+            `GPA รวม ${cumulativeGpa.toFixed(2)} ` +
+            "อยู่ในเกณฑ์ปกติ"
+        };
+      }
+
+      else if (
+        cumulativeGpa >=
+        settings.probationMinGpa
+      ) {
+        studentStatus = {
+          label:
+            "วิทยาทัณฑ์ (Probation)",
+
+          tone: "warning",
+          icon: "!",
+
+          detail:
+            `GPA รวม ${cumulativeGpa.toFixed(2)} ` +
+            `ต่ำกว่า ${settings.normalMinGpa.toFixed(2)}`
+        };
+      }
+
+      else {
+        studentStatus = {
+          label: "พ้นสภาพ",
+          tone: "danger",
+          icon: "×",
+
+          detail:
+            `GPA รวม ${cumulativeGpa.toFixed(2)} ` +
+            `ต่ำกว่า ${settings.probationMinGpa.toFixed(2)}`
+        };
+      }
+
+      const honorBaseEligible =
+        earnedCredits >=
+          settings.totalCredits &&
+
+        (
+          !settings.requireNoFForHonors ||
+          !hasF
+        ) &&
+
+        (
+          !settings.requireNoRepeatForHonors ||
+          !hasRepeatedCourse
+        );
+
+      const honor1Eligible =
+        honorBaseEligible &&
+        cumulativeGpa >=
+          settings.honor1Gpa;
+
+      const honor2Eligible =
+        honorBaseEligible &&
+        cumulativeGpa >=
+          settings.honor2Gpa &&
+        cumulativeGpa <
+          settings.honor1Gpa;
+
+      return {
+        earnedCredits,
+
+        remainingCredits:
+          Math.max(
+            0,
+            settings.totalCredits -
+              earnedCredits
+          ),
+
+        progress:
+          settings.totalCredits > 0
+            ? (
+              earnedCredits /
+              settings.totalCredits
+            ) * 100
+            : 0,
+
+        cumulativeGpa,
+        categoryCredits,
+
+        hasF,
+        hasRepeatedCourse,
+
+        studentStatus,
+
+        honorBaseEligible,
+        honor1Eligible,
+        honor2Eligible
+      };
+    }
+
+    function calculateTermStats() {
+      const rows = [];
+
+      for (
+        let year = 1;
+        year <= 4;
+        year += 1
+      ) {
+        for (
+          let semester = 1;
+          semester <= 3;
+          semester += 1
+        ) {
+          const termCourses =
+            courses.filter(course => {
+              return (
+                course.year === year &&
+                String(course.semester) ===
+                  String(semester)
+              );
+            });
+
+          let points = 0;
+          let gpaCredits = 0;
+          let earnedCredits = 0;
+
+          termCourses.forEach(course => {
+            const gradeValue =
+              GRADE_VALUES[course.grade];
+
+            if (gradeValue !== null) {
+              points +=
+                gradeValue *
+                course.credits;
+
+              gpaCredits +=
+                course.credits;
+            }
+
+            if (isPassed(course)) {
+              earnedCredits +=
+                course.credits;
+            }
+          });
+
+          rows.push({
+            year,
+            semester,
+
+            courseCount:
+              termCourses.length,
+
+            earnedCredits,
+
+            gpa:
+              gpaCredits > 0
+                ? points / gpaCredits
+                : 0
+          });
         }
       }
 
-      const gpa = gpaCredits
-        ? points / gpaCredits
-        : 0;
+      return rows;
+    }
 
-      let honors =
-        "ยังไม่เข้าเกณฑ์เกียรตินิยม";
+    function calculateTrend() {
+      const activeTerms =
+        calculateTermStats().filter(
+          term =>
+            term.courseCount > 0
+        );
 
-      if (hasF) {
-        honors =
-          "ไม่ได้รับเกียรตินิยม เนื่องจากมีเกรด F";
+      if (activeTerms.length < 2) {
+        return {
+          label: "ข้อมูลยังไม่พอ",
+          icon: "—",
+
+          detail:
+            "เพิ่มผลการเรียนอย่างน้อย 2 เทอม " +
+            "เพื่อดูแนวโน้ม"
+        };
       }
 
-      else if (!graduatedInTime) {
-        honors =
-          "ไม่ได้รับเกียรตินิยม เนื่องจากจบเกินกำหนด";
+      const latest =
+        activeTerms[
+          activeTerms.length - 1
+        ];
+
+      const previous =
+        activeTerms[
+          activeTerms.length - 2
+        ];
+
+      const difference =
+        latest.gpa - previous.gpa;
+
+      if (difference > 0.15) {
+        return {
+          label: "แนวโน้มดีขึ้น",
+          icon: "↗",
+
+          detail:
+            "GPA เทอมล่าสุดเพิ่มขึ้น " +
+            `${difference.toFixed(2)} ` +
+            "จากเทอมก่อน"
+        };
       }
 
-      else if (hasRegisteredRepeat) {
-        honors =
-          "ไม่ได้รับเกียรตินิยม เนื่องจากลงทะเบียนเรียนซ้ำ";
-      }
+      if (difference < -0.15) {
+        return {
+          label: "ควรเฝ้าระวัง",
+          icon: "↘",
 
-      else if (gpa >= 3.75) {
-        honors = earned >= CURRICULUM.total
-          ? "เกียรตินิยมอันดับ 1"
-          : "คาดว่าจะได้เกียรตินิยมอันดับ 1";
-      }
-
-      else if (gpa >= 3.25) {
-        honors = earned >= CURRICULUM.total
-          ? "เกียรตินิยมอันดับ 2"
-          : "คาดว่าจะได้เกียรตินิยมอันดับ 2";
+          detail:
+            "GPA เทอมล่าสุดลดลง " +
+            `${Math.abs(
+              difference
+            ).toFixed(2)} ` +
+            "จากเทอมก่อน"
+        };
       }
 
       return {
-        earned,
-        remaining: Math.max(
-          0,
-          CURRICULUM.total - earned
-        ),
-        progress:
-          (earned / CURRICULUM.total) * 100,
-        gpa: gpa.toFixed(2),
-        categoryCredits,
-        honors
+        label: "แนวโน้มคงที่",
+        icon: "→",
+
+        detail:
+          "GPA เทอมล่าสุดใกล้เคียง" +
+          "กับเทอมก่อน"
       };
     }
 
-    function calculateSemesterStats() {
-      const map = new Map();
-
-      const semesterWeight = {
-        "1": 1,
-        "2": 2,
-        Summer: 3
-      };
-
-      for (const course of courses) {
-        const key =
-          `${course.year}/${course.semester}`;
-
-        const current = map.get(key) || {
-          key,
-          year: course.year,
-          semester: course.semester,
-          credits: 0,
-          points: 0,
-          gpaCredits: 0
-        };
-
-        const gradeValue =
-          GRADE_VALUES[course.grade];
-
-        if (gradeValue !== null) {
-          current.points +=
-            gradeValue * course.credits;
-
-          current.gpaCredits +=
-            course.credits;
-        }
-
-        if (!["F", "W", "I"].includes(course.grade)) {
-          current.credits += course.credits;
-        }
-
-        map.set(key, current);
-      }
-
-      return [...map.values()]
-        .map(item => ({
-          ...item,
-
-          gpa: item.gpaCredits
-            ? item.points / item.gpaCredits
-            : 0
-        }))
-
-        .sort((a, b) => {
-          return (
-            a.year - b.year ||
-            semesterWeight[a.semester] -
-            semesterWeight[b.semester]
-          );
-        });
-    }
-
-    function progress(value, tone = "blue") {
+    function progressBar(
+      value,
+      tone = ""
+    ) {
       const width = Math.min(
         100,
         Math.max(0, value)
       );
 
       return `
-        <div class="progress-track">
-          <div
-            class="progress-fill ${tone}"
-            style="width: ${width}%"
-          ></div>
+        <div class="progress ${tone}">
+          <span style="width: ${width}%"></span>
         </div>
       `;
     }
 
+    /* =========================
+       PROFILE
+    ========================= */
+
+    function renderProfile() {
+      $("#profileName").textContent =
+        profile.name;
+
+      $("#profileId").textContent =
+        `${profile.studentId} · ` +
+        profile.program;
+
+      $("#avatar").textContent =
+        (
+          profile.name.trim()[0] ||
+          "S"
+        ).toUpperCase();
+    }
+
+    /* =========================
+       DASHBOARD
+    ========================= */
+
     function renderDashboard() {
-      const stats = calculateStats();
+      const stats =
+        calculateAllStats();
+
+      const trend =
+        calculateTrend();
+
+      const statusClass =
+        stats.studentStatus.tone ===
+        "normal"
+          ? ""
+          : stats.studentStatus.tone;
 
       $("#dashboardTab").innerHTML = `
-        <section class="feature-card dark-card">
+        <section class="card dark hero-card">
           <div>
-            <p class="section-kicker">
-              CURRENT GPA
+            <p class="kicker">
+              CUMULATIVE GPA
             </p>
 
-            <div class="big-number">
-              ${stats.gpa}
+            <div class="gpa">
+              ${stats.cumulativeGpa.toFixed(2)}
             </div>
 
-            <p>${stats.honors}</p>
+            <p class="hero-note">
+              คำนวณจากรายวิชาที่มีเกรด A–F
+              โดยไม่รวม W และ I
+            </p>
           </div>
 
-          <div class="award-icon">🏆</div>
+          <div class="hero-icon">
+            🎓
+          </div>
         </section>
 
-        <div class="two-column">
-          <section class="metric-card">
+        <div class="metrics">
+          <section class="card metric">
             <span>หน่วยกิตสะสม</span>
-            <strong>${stats.earned}</strong>
+
+            <strong>
+              ${stats.earnedCredits}
+            </strong>
+
             <small>
-              จาก ${CURRICULUM.total} หน่วยกิต
+              จาก ${settings.totalCredits}
+              หน่วยกิต
             </small>
           </section>
 
-          <section class="metric-card accent-card">
-            <span>คงเหลือ</span>
-            <strong>${stats.remaining}</strong>
-            <small>หน่วยกิตก่อนจบ</small>
+          <section class="card metric red">
+            <span>หน่วยกิตคงเหลือ</span>
+
+            <strong>
+              ${stats.remainingCredits}
+            </strong>
+
+            <small>
+              ก่อนครบหลักสูตร
+            </small>
           </section>
         </div>
 
-        <section class="paper-card">
-          <div class="card-heading">
+        <section class="card">
+          <div class="card-head">
             <div>
-              <p class="section-kicker">
+              <p class="kicker">
                 GRADUATION
               </p>
 
-              <h2>ความคืบหน้าหลักสูตร</h2>
+              <h2>
+                ความคืบหน้าหลักสูตร
+              </h2>
             </div>
 
-            <strong>
+            <div class="big-label">
               ${Math.round(stats.progress)}%
-            </strong>
-          </div>
-
-          ${progress(stats.progress)}
-        </section>
-
-        <section class="paper-card">
-          <div class="card-heading">
-            <div>
-              <p class="section-kicker">
-                CURRICULUM
-              </p>
-
-              <h2>หน่วยกิตแยกตามหมวด</h2>
             </div>
           </div>
 
-          <div class="category-list">
-            ${
-              Object.entries(
-                CURRICULUM.categories
-              )
-
-              .map(([key, category]) => {
-                const amount =
-                  key === "genEd" ||
-                  key === "specific"
-
-                    ? stats.categoryCredits[key].total
-                    : stats.categoryCredits[key];
-
-                const tone =
-                  key === "specific"
-                    ? "red"
-
-                    : key === "freeElective"
-                      ? "gold"
-                      : "blue";
-
-                return `
-                  <div class="category-row">
-                    <div class="category-label">
-                      <span>${category.name}</span>
-
-                      <strong>
-                        ${amount}/${category.required}
-                      </strong>
-                    </div>
-
-                    ${progress(
-                      amount /
-                      category.required *
-                      100,
-                      tone
-                    )}
-                  </div>
-                `;
-              })
-
-              .join("")
-            }
-          </div>
+          ${progressBar(stats.progress)}
         </section>
 
-        <section class="paper-card">
-          <p class="section-kicker">
-            HONOR CONDITIONS
+        <section class="card">
+          <p class="kicker">
+            STUDENT STATUS
           </p>
 
-          <h2>เงื่อนไขเกียรตินิยม</h2>
+          <h2>
+            สถานภาพนักศึกษา
+          </h2>
 
-          <div class="toggle-grid">
-            <button
-              id="graduatedToggle"
-              class="choice ${
-                graduatedInTime
-                  ? "active"
-                  : ""
-              }"
-            >
-              จบภายใน 4 ปี
+          <div class="status-box ${statusClass}">
+            <div class="status-symbol">
+              ${stats.studentStatus.icon}
+            </div>
 
+            <div class="status-copy">
               <strong>
-                ${
-                  graduatedInTime
-                    ? "ใช่"
-                    : "ไม่ใช่"
-                }
+                ${stats.studentStatus.label}
               </strong>
-            </button>
 
-            <button
-              id="repeatToggle"
-              class="choice ${
-                !hasRegisteredRepeat
-                  ? "active"
+              <p>
+                ${stats.studentStatus.detail}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <p class="kicker">
+            HONORS
+          </p>
+
+          <h2>
+            โอกาสได้รับเกียรตินิยม
+          </h2>
+
+          <div class="honor-grid">
+            <div class="
+              honor-card
+              ${
+                stats.honor1Eligible
+                  ? "eligible"
                   : ""
-              }"
-            >
-              ไม่ลงเรียนซ้ำ
-
+              }
+            ">
               <strong>
-                ${
-                  hasRegisteredRepeat
-                    ? "ไม่ผ่าน"
-                    : "ผ่าน"
-                }
+                อันดับ 1
               </strong>
-            </button>
+
+              <span>
+                ${
+                  stats.honor1Eligible
+                    ? "ผ่านเงื่อนไขแล้ว"
+                    :
+                    `ต้อง GPA ≥ ` +
+                    settings.honor1Gpa
+                      .toFixed(2) +
+                    " และครบเงื่อนไข"
+                }
+              </span>
+            </div>
+
+            <div class="
+              honor-card
+              ${
+                stats.honor2Eligible
+                  ? "eligible"
+                  : ""
+              }
+            ">
+              <strong>
+                อันดับ 2
+              </strong>
+
+              <span>
+                ${
+                  stats.honor2Eligible
+                    ? "ผ่านเงื่อนไขแล้ว"
+                    :
+                    `ต้อง GPA ≥ ` +
+                    settings.honor2Gpa
+                      .toFixed(2) +
+                    " และครบเงื่อนไข"
+                }
+              </span>
+            </div>
+          </div>
+
+          <p
+            class="helper"
+            style="margin-top: 10px"
+          >
+            เงื่อนไขปัจจุบัน:
+            ครบ ${settings.totalCredits}
+            หน่วยกิต
+
+            ${
+              settings
+                .requireNoFForHonors
+                ? " · ไม่มี F"
+                : ""
+            }
+
+            ${
+              settings
+                .requireNoRepeatForHonors
+                ? " · ไม่ลงเรียนซ้ำ"
+                : ""
+            }
+          </p>
+        </section>
+
+        <section class="card">
+          <p class="kicker">
+            STUDY TREND
+          </p>
+
+          <h2>
+            แนวโน้มการศึกษา
+          </h2>
+
+          <div class="trend-wrap">
+            <div class="trend-badge">
+              ${trend.icon}
+              <br />
+              ${trend.label}
+            </div>
+
+            <div class="trend-copy">
+              <h3>
+                ${trend.label}
+              </h3>
+
+              <p>
+                ${trend.detail}
+              </p>
+            </div>
           </div>
         </section>
       `;
-
-      $("#graduatedToggle").onclick = () => {
-        graduatedInTime = !graduatedInTime;
-        renderAll();
-      };
-
-      $("#repeatToggle").onclick = () => {
-        hasRegisteredRepeat =
-          !hasRegisteredRepeat;
-
-        renderAll();
-      };
     }
 
+    /* =========================
+       COURSES
+    ========================= */
+
     function renderCourses() {
-      const filteredCourses = courses.filter(
-        course => {
+      const filteredCourses =
+        courses.filter(course => {
           const yearMatches =
             yearFilter === "all" ||
-            course.year === Number(yearFilter);
+            course.year ===
+              Number(yearFilter);
 
           const semesterMatches =
             semesterFilter === "all" ||
-            course.semester === semesterFilter;
+            String(course.semester) ===
+              semesterFilter;
 
           return (
             yearMatches &&
             semesterMatches
           );
-        }
-      );
+        });
 
       $("#coursesTab").innerHTML = `
-        <section class="paper-card filter-card">
-          <div>
-            <p class="section-kicker">FILTER</p>
-            <h2>ค้นหารายวิชา</h2>
-          </div>
+        <section class="card">
+          <p class="kicker">
+            FILTER
+          </p>
 
-          <div class="select-grid">
+          <h2>
+            รายวิชาทั้งหมด
+          </h2>
+
+          <div class="filter-grid">
             <label>
               ชั้นปี
 
-              <div class="select-wrap">
-                <select id="yearFilter">
-                  <option value="all">
-                    ทั้งหมด
-                  </option>
+              <select id="yearFilter">
+                <option value="all">
+                  ทั้งหมด
+                </option>
 
-                  ${
-                    [1, 2, 3, 4, 5, 6, 7, 8]
-
+                ${
+                  [1, 2, 3, 4]
                     .map(year => `
                       <option
                         value="${year}"
                         ${
-                          String(year) === yearFilter
+                          String(year) ===
+                          yearFilter
                             ? "selected"
                             : ""
                         }
@@ -1535,106 +2168,96 @@
                         ปี ${year}
                       </option>
                     `)
-
                     .join("")
-                  }
-                </select>
-              </div>
+                }
+              </select>
             </label>
 
             <label>
               ภาคเรียน
 
-              <div class="select-wrap">
-                <select id="semesterFilter">
-                  <option value="all">
-                    ทั้งหมด
-                  </option>
+              <select id="semesterFilter">
+                <option value="all">
+                  ทั้งหมด
+                </option>
 
-                  <option
-                    value="1"
-                    ${
-                      semesterFilter === "1"
-                        ? "selected"
-                        : ""
-                    }
-                  >
-                    เทอม 1
-                  </option>
-
-                  <option
-                    value="2"
-                    ${
-                      semesterFilter === "2"
-                        ? "selected"
-                        : ""
-                    }
-                  >
-                    เทอม 2
-                  </option>
-
-                  <option
-                    value="Summer"
-                    ${
-                      semesterFilter === "Summer"
-                        ? "selected"
-                        : ""
-                    }
-                  >
-                    Summer
-                  </option>
-                </select>
-              </div>
+                ${
+                  [1, 2, 3]
+                    .map(semester => `
+                      <option
+                        value="${semester}"
+                        ${
+                          String(semester) ===
+                          semesterFilter
+                            ? "selected"
+                            : ""
+                        }
+                      >
+                        เทอม ${semester}
+                      </option>
+                    `)
+                    .join("")
+                }
+              </select>
             </label>
           </div>
         </section>
 
         <button
-          id="addCourseButton"
-          class="primary-button"
+          id="addCourse"
+          class="btn primary full"
         >
           ＋ เพิ่มรายวิชาใหม่
         </button>
 
         <section class="course-list">
           ${
-            filteredCourses.length
-
+            filteredCourses.length > 0
               ? filteredCourses
                 .map(course => `
-                  <article class="course-card">
-                    <div class="grade-badge">
+                  <article class="course">
+                    <div class="grade">
                       ${course.grade}
                     </div>
 
-                    <div class="course-copy">
-                      <div>
+                    <div class="course-info">
+                      <div class="course-meta">
                         <span class="course-code">
                           ${course.code}
                         </span>
 
-                        <span class="term">
-                          ปี ${course.year}/${course.semester}
+                        <span class="course-term">
+                          ปี ${course.year}
+                          เทอม ${course.semester}
                         </span>
                       </div>
 
-                      <h3>${course.name}</h3>
+                      <h3>
+                        ${course.name}
+                      </h3>
 
                       <p>
                         ${
-                          CURRICULUM
-                            .categories[
-                              course.category
-                            ]?.name ||
+                          CURRICULUM[
+                            course.category
+                          ]?.name ||
                           "ไม่ระบุ"
                         }
 
-                        · ${course.credits} หน่วยกิต
+                        · ${course.credits}
+                        หน่วยกิต
+
+                        ${
+                          course.repeated
+                            ? " · เรียนซ้ำ"
+                            : ""
+                        }
                       </p>
                     </div>
 
-                    <div class="row-actions">
+                    <div class="actions">
                       <button
+                        class="icon-btn"
                         data-edit="${course.id}"
                         aria-label="แก้ไข"
                       >
@@ -1642,19 +2265,18 @@
                       </button>
 
                       <button
+                        class="icon-btn delete"
                         data-delete="${course.id}"
                         aria-label="ลบ"
                       >
-                        🗑
+                        ×
                       </button>
                     </div>
                   </article>
                 `)
-
                 .join("")
-
               : `
-                <div class="empty-state">
+                <div class="empty">
                   ไม่พบรายวิชาตามตัวกรอง
                 </div>
               `
@@ -1662,32 +2284,39 @@
         </section>
       `;
 
-      $("#yearFilter").onchange = event => {
-        yearFilter = event.target.value;
-        renderCourses();
-      };
+      $("#yearFilter").onchange =
+        event => {
+          yearFilter =
+            event.target.value;
 
-      $("#semesterFilter").onchange = event => {
-        semesterFilter = event.target.value;
-        renderCourses();
-      };
+          renderCourses();
+        };
 
-      $("#addCourseButton").onclick = () => {
-        openModal();
+      $("#semesterFilter").onchange =
+        event => {
+          semesterFilter =
+            event.target.value;
+
+          renderCourses();
+        };
+
+      $("#addCourse").onclick = () => {
+        openCourseModal();
       };
 
       document
         .querySelectorAll("[data-edit]")
         .forEach(button => {
           button.onclick = () => {
-            const selectedCourse =
-              courses.find(
-                course =>
-                  course.id ===
+            const course =
+              courses.find(item => {
+                return (
+                  item.id ===
                   button.dataset.edit
-              );
+                );
+              });
 
-            openModal(selectedCourse);
+            openCourseModal(course);
           };
         });
 
@@ -1696,171 +2325,550 @@
         .forEach(button => {
           button.onclick = () => {
             const confirmed = confirm(
-              "คุณต้องการลบรายวิชานี้ใช่หรือไม่?"
+              "ต้องการลบรายวิชานี้ใช่หรือไม่?"
             );
 
             if (!confirmed) {
               return;
             }
 
-            courses = courses.filter(
-              course =>
-                course.id !==
-                button.dataset.delete
-            );
+            courses =
+              courses.filter(course => {
+                return (
+                  course.id !==
+                  button.dataset.delete
+                );
+              });
 
-            saveCourses();
+            saveData();
             renderAll();
           };
         });
     }
 
-    function renderStats() {
-      const items = calculateSemesterStats();
+    /* =========================
+       TERM GPA
+    ========================= */
 
-      $("#statsTab").innerHTML = `
-        <section class="paper-card">
-          <p class="section-kicker">
-            SEMESTER GPA
+    function renderTerms() {
+      const terms =
+        calculateTermStats();
+
+      $("#termsTab").innerHTML = `
+        <section class="card">
+          <p class="kicker">
+            TERM GPA
           </p>
 
-          <h2>แนวโน้มผลการเรียน</h2>
+          <h2>
+            เกรดเฉลี่ยรายเทอม
+          </h2>
 
-          ${
-            items.length
+          <div class="chart">
+            ${
+              terms.map(term => `
+                <div class="bar-col">
+                  <span>
+                    ${
+                      term.courseCount > 0
+                        ? term.gpa.toFixed(2)
+                        : "-"
+                    }
+                  </span>
 
-              ? `
-                <div class="chart">
-                  ${
-                    items.map(item => `
-                      <div class="bar-column">
-                        <span>
-                          ${item.gpa.toFixed(2)}
-                        </span>
+                  <div
+                    class="bar"
+                    style="
+                      height:
+                      ${
+                        term.courseCount > 0
+                          ? Math.max(
+                            5,
+                            (
+                              term.gpa / 4
+                            ) * 100
+                          )
+                          : 5
+                      }%
+                    "
+                  ></div>
 
-                        <div
-                          class="bar"
-                          style="
-                            height:
-                            ${
-                              Math.max(
-                                5,
-                                item.gpa / 4 * 100
-                              )
-                            }%
-                          "
-                        ></div>
-
-                        <small>
-                          ${item.year}/${item.semester}
-                        </small>
-                      </div>
-                    `)
-
-                    .join("")
-                  }
+                  <small>
+                    ${term.year}/${term.semester}
+                  </small>
                 </div>
-              `
-
-              : `
-                <div class="empty-state">
-                  ยังไม่มีข้อมูลสำหรับสร้างกราฟ
-                </div>
-              `
-          }
+              `).join("")
+            }
+          </div>
         </section>
 
-        <section class="paper-card">
-          <p class="section-kicker">
-            DETAIL
+        <section class="card">
+          <p class="kicker">
+            ALL 12 TERMS
           </p>
 
-          <h2>ผลการเรียนรายภาค</h2>
+          <h2>
+            ปี 1–4 เทอม 1–3
+          </h2>
 
-          <div class="semester-list">
+          <div class="term-summary">
             ${
-              items.map(item => `
-                <div>
+              terms.map(term => `
+                <div class="term-item">
                   <span>
-                    ปี ${item.year}
-                    เทอม ${item.semester}
+                    ปี ${term.year}
+                    เทอม ${term.semester}
                   </span>
 
                   <strong>
-                    GPA ${item.gpa.toFixed(2)}
+                    ${
+                      term.courseCount > 0
+                        ? `GPA ` +
+                          term.gpa.toFixed(2)
+                        : "ยังไม่มีข้อมูล"
+                    }
                   </strong>
 
                   <small>
-                    ${item.credits} หน่วยกิต
+                    ${term.courseCount} วิชา
+                    · ผ่าน
+                    ${term.earnedCredits}
+                    หน่วยกิต
                   </small>
                 </div>
-              `)
-
-              .join("")
+              `).join("")
             }
           </div>
         </section>
       `;
     }
 
+    /* =========================
+       CHECKLIST
+    ========================= */
+
+    function renderChecklist() {
+      const stats =
+        calculateAllStats();
+
+      const checks = [];
+
+      Object.entries(
+        CURRICULUM
+      ).forEach(([key, category]) => {
+        const amount =
+          key === "genEd" ||
+          key === "specific"
+
+            ? stats.categoryCredits[
+                key
+              ].total
+
+            : stats.categoryCredits[
+                key
+              ];
+
+        checks.push({
+          done:
+            amount >=
+            category.required,
+
+          title:
+            category.name,
+
+          detail:
+            `${amount}/` +
+            `${category.required} ` +
+            "หน่วยกิต"
+        });
+
+        if (category.subcategories) {
+          Object.entries(
+            category.subcategories
+          ).forEach(
+            ([subcategoryKey, subcategory]) => {
+              const subcategoryAmount =
+                stats.categoryCredits[
+                  key
+                ][subcategoryKey] || 0;
+
+              checks.push({
+                done:
+                  subcategoryAmount >=
+                  subcategory.required,
+
+                title:
+                  `${category.name} — ` +
+                  subcategory.name,
+
+                detail:
+                  `${subcategoryAmount}/` +
+                  `${subcategory.required} ` +
+                  "หน่วยกิต"
+              });
+            }
+          );
+        }
+      });
+
+      $("#checklistTab").innerHTML = `
+        <section class="card">
+          <p class="kicker">
+            AUTO CHECKLIST
+          </p>
+
+          <h2>
+            ตรวจความครบถ้วนหลักสูตร
+          </h2>
+
+          <div class="checklist">
+            ${
+              checks.map(item => `
+                <div class="
+                  check-item
+                  ${item.done ? "done" : ""}
+                ">
+                  <div class="check-icon">
+                    ${item.done ? "✓" : "·"}
+                  </div>
+
+                  <div class="check-copy">
+                    <strong>
+                      ${item.title}
+                    </strong>
+
+                    <small>
+                      ${item.detail}
+                    </small>
+                  </div>
+                </div>
+              `).join("")
+            }
+          </div>
+        </section>
+      `;
+    }
+
+    /* =========================
+       SETTINGS
+    ========================= */
+
     function renderSettings() {
       $("#settingsTab").innerHTML = `
-        <section class="paper-card">
-          <p class="section-kicker">
+        <section class="card">
+          <p class="kicker">
+            PROFILE
+          </p>
+
+          <h2>
+            ข้อมูลนักศึกษา
+          </h2>
+
+          <div class="settings-stack">
+            <label>
+              ชื่อ–นามสกุล
+
+              <input
+                id="settingsName"
+                value="${escapeHtml(
+                  profile.name
+                )}"
+              />
+            </label>
+
+            <label>
+              รหัสนักศึกษา
+
+              <input
+                id="settingsId"
+                value="${escapeHtml(
+                  profile.studentId
+                )}"
+              />
+            </label>
+
+            <label>
+              ชื่อหลักสูตร
+
+              <input
+                id="settingsProgram"
+                value="${escapeHtml(
+                  profile.program
+                )}"
+              />
+            </label>
+
+            <button
+              id="saveProfileSettings"
+              class="btn primary full"
+            >
+              บันทึกข้อมูลนักศึกษา
+            </button>
+          </div>
+        </section>
+
+        <section class="card">
+          <p class="kicker">
+            ACADEMIC RULES
+          </p>
+
+          <h2>
+            ตั้งค่าเกณฑ์การคำนวณ
+          </h2>
+
+          <p class="helper">
+            ค่าเริ่มต้นเป็นตัวอย่าง
+            เกณฑ์จริงอาจแตกต่างกัน
+            ตามข้อบังคับของมหาวิทยาลัย
+          </p>
+
+          <div
+            class="settings-stack"
+            style="margin-top: 12px"
+          >
+            <div class="form-grid">
+              <label>
+                หน่วยกิตจบ
+
+                <input
+                  id="setTotalCredits"
+                  type="number"
+                  min="1"
+                  value="${settings.totalCredits}"
+                />
+              </label>
+
+              <label>
+                เกียรตินิยม 1
+
+                <input
+                  id="setHonor1"
+                  type="number"
+                  min="0"
+                  max="4"
+                  step="0.01"
+                  value="${settings.honor1Gpa}"
+                />
+              </label>
+            </div>
+
+            <div class="form-grid">
+              <label>
+                เกียรตินิยม 2
+
+                <input
+                  id="setHonor2"
+                  type="number"
+                  min="0"
+                  max="4"
+                  step="0.01"
+                  value="${settings.honor2Gpa}"
+                />
+              </label>
+
+              <label>
+                สถานภาพปกติ ≥
+
+                <input
+                  id="setNormal"
+                  type="number"
+                  min="0"
+                  max="4"
+                  step="0.01"
+                  value="${settings.normalMinGpa}"
+                />
+              </label>
+            </div>
+
+            <label>
+              Probation ≥ /
+              พ้นสภาพต่ำกว่า
+
+              <input
+                id="setProbation"
+                type="number"
+                min="0"
+                max="4"
+                step="0.01"
+                value="${settings.probationMinGpa}"
+              />
+            </label>
+
+            <label class="checkbox-line">
+              <input
+                id="setNoF"
+                type="checkbox"
+                ${
+                  settings
+                    .requireNoFForHonors
+                    ? "checked"
+                    : ""
+                }
+              />
+
+              เกียรตินิยมต้องไม่มี F
+            </label>
+
+            <label class="checkbox-line">
+              <input
+                id="setNoRepeat"
+                type="checkbox"
+                ${
+                  settings
+                    .requireNoRepeatForHonors
+                    ? "checked"
+                    : ""
+                }
+              />
+
+              เกียรตินิยมต้องไม่ลงเรียนซ้ำ
+            </label>
+
+            <button
+              id="saveRules"
+              class="btn primary full"
+            >
+              บันทึกเกณฑ์
+            </button>
+          </div>
+        </section>
+
+        <section class="card">
+          <p class="kicker">
             DATA
           </p>
 
-          <h2>จัดการข้อมูล</h2>
+          <h2>
+            จัดการข้อมูล
+          </h2>
 
           <button
             id="resetData"
-            class="outline-button"
+            class="btn secondary full"
           >
-            รีเซ็ตข้อมูลตัวอย่าง
+            รีเซ็ตเป็นข้อมูลตัวอย่าง
           </button>
+
+          <div style="height: 9px"></div>
 
           <button
             id="clearData"
-            class="danger-button"
+            class="btn danger full"
           >
             ลบรายวิชาทั้งหมด
           </button>
         </section>
 
-        <section class="dark-card info-card">
-          <div style="font-size: 42px">
-            🎓
-          </div>
+        <section class="card dark">
+          <p class="kicker">
+            PWA NOTE
+          </p>
 
-          <div>
-            <p class="section-kicker">
-              ABOUT
-            </p>
+          <h2>
+            Single HTML App
+          </h2>
 
-            <h2>GradTrack Aokbaab</h2>
+          <p class="hero-note">
+            แอปนี้ไม่ต้อง Login
+            และบันทึกข้อมูลไว้ในเครื่อง
+            ด้วย localStorage
 
-            <p>
-              ออกแบบด้วยระบบสี การ์ด
-              Typography และ Component
-              ตาม Design System ที่กำหนด
-            </p>
-          </div>
+            การติดตั้งแบบ PWA เต็มรูปแบบ
+            และออฟไลน์สมบูรณ์จำเป็นต้องมี
+            manifest และ service worker
+            แยกเพิ่มเติม
+          </p>
         </section>
       `;
 
+      $("#saveProfileSettings").onclick =
+        () => {
+          profile.name =
+            $("#settingsName")
+              .value
+              .trim() ||
+            profile.name;
+
+          profile.studentId =
+            $("#settingsId")
+              .value
+              .trim() ||
+            profile.studentId;
+
+          profile.program =
+            $("#settingsProgram")
+              .value
+              .trim() ||
+            profile.program;
+
+          saveData();
+          renderAll();
+
+          alert(
+            "บันทึกข้อมูลนักศึกษาแล้ว"
+          );
+        };
+
+      $("#saveRules").onclick = () => {
+        settings.totalCredits =
+          Number(
+            $("#setTotalCredits").value
+          ) || 133;
+
+        settings.honor1Gpa =
+          Number(
+            $("#setHonor1").value
+          );
+
+        settings.honor2Gpa =
+          Number(
+            $("#setHonor2").value
+          );
+
+        settings.normalMinGpa =
+          Number(
+            $("#setNormal").value
+          );
+
+        settings.probationMinGpa =
+          Number(
+            $("#setProbation").value
+          );
+
+        settings.requireNoFForHonors =
+          $("#setNoF").checked;
+
+        settings
+          .requireNoRepeatForHonors =
+          $("#setNoRepeat").checked;
+
+        saveData();
+        renderAll();
+
+        alert(
+          "บันทึกเกณฑ์แล้ว"
+        );
+      };
+
       $("#resetData").onclick = () => {
         const confirmed = confirm(
-          "รีเซ็ตข้อมูลทั้งหมดเป็นข้อมูลตัวอย่าง?"
+          "รีเซ็ตข้อมูลทั้งหมดเป็นค่าเริ่มต้น?"
         );
 
         if (!confirmed) {
           return;
         }
 
-        courses =
-          structuredClone(INITIAL_COURSES);
+        profile =
+          cloneData(INITIAL_PROFILE);
 
-        saveCourses();
+        settings =
+          cloneData(DEFAULT_SETTINGS);
+
+        courses =
+          cloneData(INITIAL_COURSES);
+
+        saveData();
         renderAll();
       };
 
@@ -1874,89 +2882,100 @@
         }
 
         courses = [];
-        saveCourses();
+
+        saveData();
         renderAll();
       };
     }
 
-    function setupFormOptions() {
-      $("#formGrade").innerHTML =
-        Object.keys(GRADE_VALUES)
+    /* =========================
+       HELPERS
+    ========================= */
 
-        .map(grade => `
-          <option value="${grade}">
-            ${grade}
-          </option>
-        `)
-
-        .join("");
-
-      $("#formYear").innerHTML =
-        [1, 2, 3, 4, 5, 6, 7, 8]
-
-        .map(year => `
-          <option value="${year}">
-            ${year}
-          </option>
-        `)
-
-        .join("");
-
-      $("#formCategory").innerHTML =
-        Object.entries(
-          CURRICULUM.categories
-        )
-
-        .map(([key, category]) => `
-          <option value="${key}">
-            ${category.name}
-          </option>
-        `)
-
-        .join("");
-
-      updateSubcategoryOptions();
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
     }
 
-    function updateSubcategoryOptions() {
-      const category =
+    /* =========================
+       COURSE FORM
+    ========================= */
+
+    function setupCourseForm() {
+      $("#formGrade").innerHTML =
+        Object.keys(GRADE_VALUES)
+          .map(grade => `
+            <option value="${grade}">
+              ${grade}
+            </option>
+          `)
+          .join("");
+
+      $("#formYear").innerHTML =
+        [1, 2, 3, 4]
+          .map(year => `
+            <option value="${year}">
+              ปี ${year}
+            </option>
+          `)
+          .join("");
+
+      $("#formCategory").innerHTML =
+        Object.entries(CURRICULUM)
+          .map(([key, category]) => `
+            <option value="${key}">
+              ${category.name}
+            </option>
+          `)
+          .join("");
+
+      updateSubcategories();
+    }
+
+    function updateSubcategories() {
+      const categoryKey =
         $("#formCategory").value;
 
-      const wrapper =
-        $("#subcategoryWrap");
-
-      const select =
-        $("#formSubcategory");
-
       const subcategories =
-        CURRICULUM
-          .categories[category]
-          ?.subcategories;
+        CURRICULUM[
+          categoryKey
+        ]?.subcategories;
 
       if (!subcategories) {
-        wrapper.hidden = true;
-        select.innerHTML = "";
+        $("#subcategoryWrap").hidden =
+          true;
+
+        $("#formSubcategory").innerHTML =
+          "";
+
         return;
       }
 
-      wrapper.hidden = false;
+      $("#subcategoryWrap").hidden =
+        false;
 
-      select.innerHTML =
+      $("#formSubcategory").innerHTML =
         Object.entries(subcategories)
-
-        .map(([key, subcategory]) => `
-          <option value="${key}">
-            ${subcategory.name}
-          </option>
-        `)
-
-        .join("");
+          .map(
+            ([key, subcategory]) => `
+              <option value="${key}">
+                ${subcategory.name}
+              </option>
+            `
+          )
+          .join("");
     }
 
-    function openModal(course = null) {
-      editingId = course?.id || null;
+    function openCourseModal(
+      course = null
+    ) {
+      editingId =
+        course?.id || null;
 
-      $("#modalHeading").textContent =
+      $("#courseModalTitle").textContent =
         editingId
           ? "แก้ไขรายวิชา"
           : "เพิ่มรายวิชา";
@@ -1982,145 +3001,271 @@
       $("#formCategory").value =
         course?.category || "genEd";
 
-      updateSubcategoryOptions();
+      $("#formRepeated").checked =
+        Boolean(course?.repeated);
 
-      if (!$("#subcategoryWrap").hidden) {
+      updateSubcategories();
+
+      if (
+        !$("#subcategoryWrap").hidden
+      ) {
         $("#formSubcategory").value =
           course?.subcategory ||
+
           (
-            $("#formCategory").value === "genEd"
+            $("#formCategory").value ===
+            "genEd"
+
               ? "thai"
               : "compulsory"
           );
       }
 
-      $("#courseModal").classList.add("open");
+      $("#courseModal")
+        .classList
+        .add("open");
     }
 
-    function closeModal() {
-      $("#courseModal").classList.remove("open");
+    function closeCourseModal() {
+      $("#courseModal")
+        .classList
+        .remove("open");
     }
+
+    /* =========================
+       PROFILE FORM
+    ========================= */
+
+    function openProfileModal() {
+      $("#studentNameInput").value =
+        profile.name;
+
+      $("#studentIdInput").value =
+        profile.studentId;
+
+      $("#programInput").value =
+        profile.program;
+
+      $("#profileModal")
+        .classList
+        .add("open");
+    }
+
+    function closeProfileModal() {
+      $("#profileModal")
+        .classList
+        .remove("open");
+    }
+
+    /* =========================
+       RENDER
+    ========================= */
 
     function renderAll() {
+      renderProfile();
       renderDashboard();
       renderCourses();
-      renderStats();
+      renderTerms();
+      renderChecklist();
       renderSettings();
     }
 
-    setupFormOptions();
+    setupCourseForm();
     renderAll();
 
+    /* =========================
+       NAVIGATION EVENTS
+    ========================= */
+
     document
-      .querySelectorAll(".bottom-nav button")
+      .querySelectorAll(".nav-btn")
       .forEach(button => {
         button.onclick = () => {
           document
             .querySelectorAll(
-              ".bottom-nav button"
+              ".nav-btn"
             )
-
             .forEach(item => {
-              item.classList.remove("active");
+              item.classList.remove(
+                "active"
+              );
             });
 
-          button.classList.add("active");
+          button.classList.add(
+            "active"
+          );
 
           [
             "dashboardTab",
             "coursesTab",
-            "statsTab",
+            "termsTab",
+            "checklistTab",
             "settingsTab"
-          ]
-
-          .forEach(id => {
-            document.getElementById(id).hidden =
+          ].forEach(id => {
+            document
+              .getElementById(id)
+              .hidden =
               id !== button.dataset.tab;
+          });
+
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
           });
         };
       });
 
+    /* =========================
+       MODAL EVENTS
+    ========================= */
+
+    $("#quickEditProfile").onclick =
+      openProfileModal;
+
     $("#formCategory").onchange =
-      updateSubcategoryOptions;
+      updateSubcategories;
 
-    $("#closeModal").onclick =
-      closeModal;
+    $("#closeCourseModal").onclick =
+      closeCourseModal;
 
-    $("#cancelModal").onclick =
-      closeModal;
+    $("#cancelCourseModal").onclick =
+      closeCourseModal;
 
-    $("#courseModal").onclick = event => {
-      if (event.target === $("#courseModal")) {
-        closeModal();
-      }
-    };
+    $("#closeProfileModal").onclick =
+      closeProfileModal;
 
-    $("#courseForm").onsubmit = event => {
-      event.preventDefault();
+    $("#cancelProfileModal").onclick =
+      closeProfileModal;
 
-      const category =
-        $("#formCategory").value;
-
-      const course = {
-        id:
-          editingId ||
-          String(Date.now()),
-
-        code:
-          $("#formCode")
-            .value
-            .trim()
-            .toUpperCase(),
-
-        name:
-          $("#formName")
-            .value
-            .trim(),
-
-        credits:
-          Number(
-            $("#formCredits").value
-          ),
-
-        grade:
-          $("#formGrade").value,
-
-        category,
-
-        subcategory:
-          $("#subcategoryWrap").hidden
-            ? ""
-            : $("#formSubcategory").value,
-
-        year:
-          Number(
-            $("#formYear").value
-          ),
-
-        semester:
-          $("#formSemester").value
+    $("#courseModal").onclick =
+      event => {
+        if (
+          event.target ===
+          $("#courseModal")
+        ) {
+          closeCourseModal();
+        }
       };
 
-      if (!course.code || !course.name) {
-        return;
-      }
+    $("#profileModal").onclick =
+      event => {
+        if (
+          event.target ===
+          $("#profileModal")
+        ) {
+          closeProfileModal();
+        }
+      };
 
-      if (editingId) {
-        courses = courses.map(item => {
-          return item.id === editingId
-            ? course
-            : item;
-        });
-      }
+    /* =========================
+       SAVE COURSE
+    ========================= */
 
-      else {
-        courses.push(course);
-      }
+    $("#courseForm").onsubmit =
+      event => {
+        event.preventDefault();
 
-      saveCourses();
-      closeModal();
-      renderAll();
-    };
+        const course = {
+          id:
+            editingId ||
+            String(Date.now()),
+
+          code:
+            $("#formCode")
+              .value
+              .trim()
+              .toUpperCase(),
+
+          name:
+            $("#formName")
+              .value
+              .trim(),
+
+          credits:
+            Number(
+              $("#formCredits").value
+            ),
+
+          grade:
+            $("#formGrade").value,
+
+          year:
+            Number(
+              $("#formYear").value
+            ),
+
+          semester:
+            $("#formSemester").value,
+
+          category:
+            $("#formCategory").value,
+
+          subcategory:
+            $("#subcategoryWrap").hidden
+              ? ""
+              : $("#formSubcategory")
+                .value,
+
+          repeated:
+            $("#formRepeated").checked
+        };
+
+        if (
+          !course.code ||
+          !course.name
+        ) {
+          return;
+        }
+
+        if (editingId) {
+          courses =
+            courses.map(item => {
+              return (
+                item.id === editingId
+                  ? course
+                  : item
+              );
+            });
+        }
+
+        else {
+          courses.push(course);
+        }
+
+        saveData();
+        closeCourseModal();
+        renderAll();
+      };
+
+    /* =========================
+       SAVE PROFILE
+    ========================= */
+
+    $("#profileForm").onsubmit =
+      event => {
+        event.preventDefault();
+
+        profile = {
+          name:
+            $("#studentNameInput")
+              .value
+              .trim(),
+
+          studentId:
+            $("#studentIdInput")
+              .value
+              .trim(),
+
+          program:
+            $("#programInput")
+              .value
+              .trim()
+        };
+
+        saveData();
+        closeProfileModal();
+        renderAll();
+      };
   </script>
 </body>
 </html>
