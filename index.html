@@ -1232,201 +1232,486 @@
     };
 
     const INITIAL_COURSES = [
-      {
-        id: "1",
-        code: "DDT101",
-        name: "Introduction to Digital Design",
-        credits: 3,
-        grade: "A",
-        category: "core",
-        subcategory: "",
-        year: 1,
-        semester: "1",
-        repeated: false
-      },
+  /* =========================
+     ปี 1 เทอม 1 — 1/2567
+     GPA 2.83
+  ========================= */
 
-      {
-        id: "2",
-        code: "DDT102",
-        name: "Computer Programming for Designers",
-        credits: 3,
-        grade: "B+",
-        category: "specific",
-        subcategory: "compulsory",
-        year: 1,
-        semester: "1",
-        repeated: false
-      },
+  {
+    id: "2567-1-01",
+    code: "321-1101",
+    name: "สุนทรียศาสตร์ ศิลปะและการออกแบบ",
+    credits: 3,
+    grade: "B+",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 1,
+    semester: "1",
+    repeated: false
+  },
 
-      {
-        id: "3",
-        code: "THAI101",
-        name: "Thai Language Skills",
-        credits: 3,
-        grade: "A",
-        category: "genEd",
-        subcategory: "thai",
-        year: 1,
-        semester: "1",
-        repeated: false
-      },
+  {
+    id: "2567-1-02",
+    code: "321-1102",
+    name: "องค์ประกอบศิลป์และทฤษฎีสีเพื่อการออกแบบ",
+    credits: 3,
+    grade: "B",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 1,
+    semester: "1",
+    repeated: false
+  },
 
-      {
-        id: "4",
-        code: "ENG101",
-        name: "English Listening and Speaking",
-        credits: 3,
-        grade: "B",
-        category: "genEd",
-        subcategory: "foreign",
-        year: 1,
-        semester: "1",
-        repeated: false
-      },
+  {
+    id: "2567-1-03",
+    code: "321-1103",
+    name: "การวาดภาพเพื่อการออกแบบ",
+    credits: 3,
+    grade: "C",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 1,
+    semester: "1",
+    repeated: false
+  },
 
-      {
-        id: "5",
-        code: "SCI101",
-        name: "Science and Technology Today",
-        credits: 3,
-        grade: "A",
-        category: "genEd",
-        subcategory: "science",
-        year: 1,
-        semester: "2",
-        repeated: false
-      },
+  {
+    id: "2567-1-04",
+    code: "321-1104",
+    name: "คอมพิวเตอร์เพื่องานออกแบบและตกแต่งภาพ",
+    credits: 3,
+    grade: "C+",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 1,
+    semester: "1",
+    repeated: false
+  },
 
-      {
-        id: "6",
-        code: "DDT103",
-        name: "Drawing and Visual Communication",
-        credits: 3,
-        grade: "A",
-        category: "core",
-        subcategory: "",
-        year: 1,
-        semester: "2",
-        repeated: false
-      },
+  {
+    id: "2567-1-05",
+    code: "920-1135",
+    name: "สุขภาวะกายและจิต",
+    credits: 3,
+    grade: "B",
+    category: "genEd",
+    subcategory: "otherGenEd",
+    year: 1,
+    semester: "1",
+    repeated: false
+  },
 
-      {
-        id: "7",
-        code: "MATH101",
-        name: "Mathematics in Daily Life",
-        credits: 3,
-        grade: "C+",
-        category: "genEd",
-        subcategory: "math",
-        year: 1,
-        semester: "2",
-        repeated: false
-      },
+  {
+    id: "2567-1-06",
+    code: "931-1107",
+    name: "คณิตศาสตร์และสถิติในชีวิตประจำวัน",
+    credits: 3,
+    grade: "B",
+    category: "genEd",
+    subcategory: "math",
+    year: 1,
+    semester: "1",
+    repeated: false
+  },
 
-      {
-        id: "8",
-        code: "SOC101",
-        name: "Society and Culture",
-        credits: 3,
-        grade: "B+",
-        category: "genEd",
-        subcategory: "social",
-        year: 1,
-        semester: "3",
-        repeated: false
-      },
+  {
+    id: "2567-1-07",
+    code: "942-1101",
+    name: "ภาษาอังกฤษปรับพื้นฐาน 1 (T)",
+    credits: 0,
+    grade: "T",
+    category: "genEd",
+    subcategory: "foreign",
+    year: 1,
+    semester: "1",
+    repeated: false
+  },
 
-      {
-        id: "9",
-        code: "HUM101",
-        name: "Introduction to Philosophy",
-        credits: 3,
-        grade: "A",
-        category: "genEd",
-        subcategory: "humanities",
-        year: 1,
-        semester: "3",
-        repeated: false
-      },
+  /* =========================
+     ปี 1 เทอม 2 — 2/2567
+     GPA 3.15
+  ========================= */
 
-      {
-        id: "10",
-        code: "ENG102",
-        name: "English for Communication",
-        credits: 3,
-        grade: "B",
-        category: "genEd",
-        subcategory: "foreign",
-        year: 1,
-        semester: "3",
-        repeated: false
-      },
+  {
+    id: "2567-2-01",
+    code: "321-1105",
+    name: "คอมพิวเตอร์เพื่อการออกแบบมัลติมีเดีย",
+    credits: 3,
+    grade: "B+",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 1,
+    semester: "2",
+    repeated: false
+  },
 
-      {
-        id: "11",
-        code: "DDT201",
-        name: "User Experience & UI Design",
-        credits: 3,
-        grade: "A",
-        category: "specific",
-        subcategory: "compulsory",
-        year: 2,
-        semester: "1",
-        repeated: false
-      },
+  {
+    id: "2567-2-02",
+    code: "321-1206",
+    name: "คอมพิวเตอร์เพื่อการออกแบบ 3 มิติ",
+    credits: 3,
+    grade: "D+",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 1,
+    semester: "2",
+    repeated: false
+  },
 
-      {
-        id: "12",
-        code: "DDT202",
-        name: "Web Technology & Development",
-        credits: 3,
-        grade: "A",
-        category: "specific",
-        subcategory: "compulsory",
-        year: 2,
-        semester: "1",
-        repeated: false
-      },
+  {
+    id: "2567-2-03",
+    code: "321-2102",
+    name: "แนวคิดและการคิดวิเคราะห์เชิงออกแบบ",
+    credits: 3,
+    grade: "B+",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 1,
+    semester: "2",
+    repeated: false
+  },
 
-      {
-        id: "13",
-        code: "DDT203",
-        name: "Digital Photography & Lighting",
-        credits: 3,
-        grade: "B+",
-        category: "core",
-        subcategory: "",
-        year: 2,
-        semester: "2",
-        repeated: false
-      },
+  {
+    id: "2567-2-04",
+    code: "321-2103",
+    name: "การออกแบบปฏิสัมพันธ์ขั้นพื้นฐาน",
+    credits: 3,
+    grade: "A",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 1,
+    semester: "2",
+    repeated: false
+  },
 
-      {
-        id: "14",
-        code: "ENG201",
-        name: "Academic English",
-        credits: 3,
-        grade: "B",
-        category: "genEd",
-        subcategory: "otherGenEd",
-        year: 2,
-        semester: "2",
-        repeated: false
-      },
+  {
+    id: "2567-2-05",
+    code: "920-1138",
+    name: "การสื่อสารเพื่อการนำเสนอ",
+    credits: 2,
+    grade: "B+",
+    category: "genEd",
+    subcategory: "otherGenEd",
+    year: 1,
+    semester: "2",
+    repeated: false
+  },
 
-      {
-        id: "15",
-        code: "FREE101",
-        name: "Basic Japanese",
-        credits: 3,
-        grade: "A",
-        category: "freeElective",
-        subcategory: "",
-        year: 2,
-        semester: "3",
-        repeated: false
-      }
-    ];
+  {
+    id: "2567-2-06",
+    code: "941-1103",
+    name: "การอ่านและการเขียนภาษาไทยเพื่ออาชีพ",
+    credits: 2,
+    grade: "B",
+    category: "genEd",
+    subcategory: "thai",
+    year: 1,
+    semester: "2",
+    repeated: false
+  },
+
+  {
+    id: "2567-2-07",
+    code: "942-1102",
+    name: "ภาษาอังกฤษปรับพื้นฐาน 2",
+    credits: 0,
+    grade: "S",
+    category: "genEd",
+    subcategory: "foreign",
+    year: 1,
+    semester: "2",
+    repeated: false
+  },
+
+  /* =========================
+     ปี 2 เทอม 1 — 1/2568
+     GPA 3.55
+  ========================= */
+
+  {
+    id: "2568-1-01",
+    code: "321-1207",
+    name: "การสร้างแบบร่างและการสร้างแบบจำลอง",
+    credits: 3,
+    grade: "B",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 2,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2568-1-02",
+    code: "321-1208",
+    name: "การออกแบบกราฟิก",
+    credits: 3,
+    grade: "B+",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 2,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2568-1-03",
+    code: "321-2101",
+    name: "การเขียนโปรแกรมเบื้องต้นเพื่อการออกแบบและเทคโนโลยี",
+    credits: 3,
+    grade: "A",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 2,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2568-1-04",
+    code: "321-2206",
+    name: "การออกแบบนวัตกรรมดิจิทัลเบื้องต้น",
+    credits: 4,
+    grade: "B+",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 2,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2568-1-05",
+    code: "932-1107",
+    name: "วิทยาศาสตร์เพื่อคุณภาพชีวิต",
+    credits: 3,
+    grade: "A",
+    category: "genEd",
+    subcategory: "science",
+    year: 2,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2568-1-06",
+    code: "942-1107",
+    name: "ภาษาอังกฤษเพื่อการสื่อสาร",
+    credits: 2,
+    grade: "B",
+    category: "genEd",
+    subcategory: "foreign",
+    year: 2,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2568-1-07",
+    code: "943-1107",
+    name: "ภาษาจีนกลาง 1",
+    credits: 1,
+    grade: "A",
+    category: "freeElective",
+    subcategory: "",
+    year: 2,
+    semester: "1",
+    repeated: false
+  },
+
+  /* =========================
+     ปี 2 เทอม 2 — 2/2568
+     GPA 3.73
+  ========================= */
+
+  {
+    id: "2568-2-01",
+    code: "321-1209",
+    name: "ระบบคอมพิวเตอร์พื้นฐาน",
+    credits: 3,
+    grade: "B",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 2,
+    semester: "2",
+    repeated: false
+  },
+
+  {
+    id: "2568-2-02",
+    code: "321-2205",
+    name: "การออกแบบเว็บไซต์เพื่ออุปกรณ์เคลื่อนที่",
+    credits: 3,
+    grade: "A",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 2,
+    semester: "2",
+    repeated: false
+  },
+
+  {
+    id: "2568-2-03",
+    code: "321-2207",
+    name: "การออกแบบนวัตกรรมดิจิทัลเพื่องาน IoT",
+    credits: 4,
+    grade: "A",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 2,
+    semester: "2",
+    repeated: false
+  },
+
+  {
+    id: "2568-2-04",
+    code: "321-2310",
+    name: "การออกแบบอินโฟกราฟิก",
+    credits: 3,
+    grade: "A",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 2,
+    semester: "2",
+    repeated: false
+  },
+
+  {
+    id: "2568-2-05",
+    code: "910-1116",
+    name: "การคิดสร้างสรรค์เพื่อสังคม",
+    credits: 3,
+    grade: "B+",
+    category: "genEd",
+    subcategory: "humanities",
+    year: 2,
+    semester: "2",
+    repeated: false
+  },
+
+  {
+    id: "2568-2-06",
+    code: "942-1108",
+    name: "ภาษาอังกฤษเพื่อวิชาชีพ",
+    credits: 2,
+    grade: "A",
+    category: "genEd",
+    subcategory: "foreign",
+    year: 2,
+    semester: "2",
+    repeated: false
+  },
+
+  {
+    id: "2568-2-07",
+    code: "943-1108",
+    name: "ภาษาจีนกลาง 2",
+    credits: 1,
+    grade: "B+",
+    category: "freeElective",
+    subcategory: "",
+    year: 2,
+    semester: "2",
+    repeated: false
+  },
+
+  /* =========================
+     ปี 3 เทอม 1 — 1/2569
+     ยังไม่มีผลการเรียน
+  ========================= */
+
+  {
+    id: "2569-1-01",
+    code: "321-2204",
+    name: "ปัจจัยและความสัมพันธ์ระหว่างมนุษย์กับการออกแบบ",
+    credits: 3,
+    grade: "รอ",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 3,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2569-1-02",
+    code: "321-2308",
+    name: "การออกแบบนวัตกรรมดิจิทัลเชิงสร้างสรรค์ 1",
+    credits: 4,
+    grade: "รอ",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 3,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2569-1-03",
+    code: "321-2311",
+    name: "สัมมนาการออกแบบและเทคโนโลยี",
+    credits: 3,
+    grade: "รอ",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 3,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2569-1-04",
+    code: "321-3304",
+    name: "กฎหมายทรัพย์สินทางปัญญาเพื่องานออกแบบ",
+    credits: 3,
+    grade: "รอ",
+    category: "specific",
+    subcategory: "compulsory",
+    year: 3,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2569-1-05",
+    code: "910-1117",
+    name: "หลักปรัชญาของเศรษฐกิจพอเพียง",
+    credits: 3,
+    grade: "รอ",
+    category: "genEd",
+    subcategory: "social",
+    year: 3,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2569-1-06",
+    code: "920-1136",
+    name: "ภาวะผู้นำและบุคลิกภาพ",
+    credits: 1,
+    grade: "รอ",
+    category: "genEd",
+    subcategory: "otherGenEd",
+    year: 3,
+    semester: "1",
+    repeated: false
+  },
+
+  {
+    id: "2569-1-07",
+    code: "943-1109",
+    name: "ภาษาจีนกลาง 3",
+    credits: 1,
+    grade: "รอ",
+    category: "freeElective",
+    subcategory: "",
+    year: 3,
+    semester: "1",
+    repeated: false
+  }
+];
 
     const GRADE_VALUES = {
       A: 4,
